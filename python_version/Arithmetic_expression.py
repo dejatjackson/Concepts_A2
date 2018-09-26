@@ -1,4 +1,6 @@
 class Arithmetic_expression:
-	#TODO: how do i make this an interface class 
+    # TODO: how do i make this an interface class
 
-	def evaluate(self):
+    def evaluate(self):
+        pass
+
