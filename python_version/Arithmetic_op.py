@@ -1,4 +1,8 @@
-from enum import Enum
+import enum
 
-class Arithmetic_op(Enum):
-	add_operator, sub_operator, mul_operator, mod_operator, rev_div_operator, exp_operator
+class Arithmetic_op(enum.Enum):
+	add_operator = "+"
+	sub_operator = "-"
+	mul_operator = "*"
+	mod_operator = "%"
+	exp_operator = "^"
