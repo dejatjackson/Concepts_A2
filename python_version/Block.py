@@ -1,21 +1,19 @@
 
 class Block:
 
-
-	def __init__(self):
-		var = []
+	ar = []
 
 	def __init__(self, statement):
-		self.var.append(statement)
+		self.ar.append(statement)
 
-	def add(self):
-		if self.var == None:
+	def add(self,statement):
+		if self.ar == None:
 			raise ValueError("null statement argument")
-		self.var.append(self.statement)
+		self.ar.append(statement)
 
 	def process(self):
-		for x in range(0, self.var.size()):
-			self.var.get(x).execute()
+		for x in range(0, len(self.ar)):
+			self.ar[x].execute()
 
 	def size(self):
-		return self.var.size()
+		return len(self.ar)
