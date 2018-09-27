@@ -15,12 +15,12 @@ class Binary_expression():
     def evaluate(self):
 
         value = 0
-        if self.op == add_operator:
+        if self.op == Arithmetic_op.add_operator:
             value = self.expr1.evaluate() + self.expr2.evaluate()
-        elif self.op == mul_operator:
+        elif self.op == Arithmetic_op.mul_operator:
             value = self.expr1.evaluate() * self.expr2.evaluate()
-        elif self.op == div_operator:
+        elif self.op == Arithmetic_op.div_operator:
             value = self.expr1.evaluate() / self.expr2.evaluate()
-        elif self.op == sub_operator:
+        elif self.op == Arithmetic_op.sub_operator:
             value = self.expr1.evaluate() - self.expr2.evaluate()
         return value

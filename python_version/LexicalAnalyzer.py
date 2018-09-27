@@ -46,7 +46,7 @@ class LexicalAnalyzer():
                   raise LexicalException("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
             elif lexeme.charAt(0).isalpha():
 
-                if lexeme.length() == 1 and self.isValidIdentifer(lexeme.charAt(0)):
+                if lexeme.length() == 1 and self.isValidIdentifier(lexeme.charAt(0)):
                     tokType = tokentype.id
                 elif lexeme.equals("function"):
                     tokType = tokentype.function_tok
@@ -64,7 +64,7 @@ class LexicalAnalyzer():
                     tokType = tokentype.for_tok
                 else:
                     raise LexicalException ( "invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
-            elif isValidIdentifier(lexeme.charAt(0)):
+            elif self.isValidIdentifier(lexeme.charAt(0)):
                 tokType = tokentype.id; #id → letter
             elif lexeme.equals(">="):
                 tokType = tokentype.ge_operator #ge_operator → >=
@@ -159,7 +159,7 @@ class LexicalAnalyzer():
         return for_tokens
 
 
-    def isValidIdentifer(self, ch):
+    def isValidIdentifier(self, ch):
         if ch.isalpha() and ch.islower():
             return True
         else:

@@ -13,7 +13,7 @@ class Boolean_expression():
         self.expr2 = expr2
 
     def eval(self):
-        result = self.false
+        result = False
         if self.op == eq_operator:
             result = self.expr1.evaluate() == self.expr2.evaluate()
         elif self.op == ne_operator:
@@ -26,4 +26,4 @@ class Boolean_expression():
             result = self.expr1.evaluate() > self.expr2.evaluate()
         elif self.op == ge_operator:
             result = self.expr1.evaluate() >= self.expr2.evaluate()
-        return self.result
+        return result
