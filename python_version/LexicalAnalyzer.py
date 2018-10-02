@@ -10,7 +10,7 @@ class LexicalAnalyzer():
         if filename == None:
             raise TypeError("null file name argument")
         tokens = [] #TODO: Do I need this line
-        input = raw_input(new File(filename))#what is this in python
+        input = raw_input(new File(filename))#TODO what is this in python
         lineNumber = 0
         while (input.hasNext()) #toDo has next in python
             line = input.nextLine() #TODO next line in python
