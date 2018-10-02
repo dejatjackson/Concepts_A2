@@ -8,9 +8,9 @@ class Boolean_expression():
             raise TypeError("Relational operator argument cannot be null!")
         if expr1 == None or expr2 == None:
             raise TypeError("Arithmetic expression argument cannot be null!")
-        self.op = op
-        self.expr1 = expr1
-        self.expr2 = expr2
+        self.op = Relative_op(op)
+        self.expr1 = Arithmetic_expression(expr1)
+        self.expr2 = Arithmetic_expression(expr2)
 
     def eval(self):
         result = False

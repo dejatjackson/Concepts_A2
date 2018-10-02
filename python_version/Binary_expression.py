@@ -1,8 +1,11 @@
 import Arithmetic_expression
 import Arithmetic_op
-
+import Relative_op
+import enum
 
 class Binary_expression():
+
+
     def __init__(self, op, expr1, expr2):
         if op == None:
             raise TypeError("null arithmetic operator argument")
@@ -14,13 +17,13 @@ class Binary_expression():
 
     def evaluate(self):
 
-        value = 0
+        v = 0
         if self.op == Arithmetic_op.add_operator:
-            value = self.expr1.evaluate() + self.expr2.evaluate()
-        elif self.op == Arithmetic_op.mul_operator:
-            value = self.expr1.evaluate() * self.expr2.evaluate()
-        elif self.op == Arithmetic_op.div_operator:
-            value = self.expr1.evaluate() / self.expr2.evaluate()
-        elif self.op == Arithmetic_op.sub_operator:
-            value = self.expr1.evaluate() - self.expr2.evaluate()
-        return value
+            v = self.expr1.evaluate() + self.expr2.evaluate()
+        elif self.op == Arithmetic_op.mul_operator.value:
+            v = self.expr1.evaluate() * self.expr2.evaluate()
+        elif self.op == Arithmetic_op.div_operator.value:
+            v = self.expr1.evaluate() / self.expr2.evaluate()
+        elif self.op == Arithmetic_op.sub_operator.value:
+            v = self.expr1.evaluate() - self.expr2.evaluate()
+        return v

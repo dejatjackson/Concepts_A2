@@ -1,6 +1,7 @@
 import enum
 
-class Arithmetic_op(enum.Enum):
+class Arithmetic_op():
+
 	add_operator = "+"
 	sub_operator = "-"
 	mul_operator = "*"
