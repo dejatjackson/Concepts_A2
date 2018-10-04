@@ -7,7 +7,7 @@ class Block:
 		self.ar.append(statement)
 
 	def add(self,statement):
-		if self.ar == None:
+		if self.ar is None:
 			raise ValueError("null statement argument")
 		self.ar.append(statement)
 

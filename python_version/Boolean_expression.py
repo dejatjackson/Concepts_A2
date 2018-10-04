@@ -1,29 +1,29 @@
 import Relative_op
 import Arithmetic_expression
 
-class Boolean_expression():
+class Boolean_expression(Relative_op):
 
     def __init__(self,op, expr1, expr2 ):
-        if op == None:
+        if op is None:
             raise TypeError("Relational operator argument cannot be null!")
-        if expr1 == None or expr2 == None:
+        if expr1 is None or expr2 is None:
             raise TypeError("Arithmetic expression argument cannot be null!")
-        self.op = Relative_op(op)
-        self.expr1 = Arithmetic_expression(expr1)
-        self.expr2 = Arithmetic_expression(expr2)
+        self.op = op
+        self.expr1 = expr1
+        self.expr2 = expr2
 
     def eval(self):
         result = False
-        if self.op == eq_operator:
+        if self.op == self.eq_operator:
             result = self.expr1.evaluate() == self.expr2.evaluate()
-        elif self.op == ne_operator:
+        elif self.op == self.ne_operator:
             result = self.expr1.evaluate() != self.expr2.evaluate()
-        elif self.op == lt_operator:
+        elif self.op == self.lt_operator:
             result = self.expr1.evaluate() < self.expr2.evaluate()
-        elif self.op == le_operator:
+        elif self.op == self.le_operator:
             result = self.expr1.evaluate() <= self.expr2.evaluate()
-        elif self.op == gt_operator:
+        elif self.op == self.gt_operator:
             result = self.expr1.evaluate() > self.expr2.evaluate()
-        elif self.op == ge_operator:
+        elif self.op == self.ge_operator:
             result = self.expr1.evaluate() >= self.expr2.evaluate()
         return result

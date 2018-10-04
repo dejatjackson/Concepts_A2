@@ -1,4 +1,6 @@
-class PrintStatement:
+import Statement
+
+class PrintStatement(Statement):
 
     def __init__(self, expr):
         if expr is None:

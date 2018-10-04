@@ -1,12 +1,13 @@
 import Arithmetic_expressions
+import Memory
 
-class ID:
+class ID(Memory):
     def __init__(self, id):
         self.id = id
 
     def evaluate(self):
 
-        return Memory.fetch(self.id) #TODO: No lcue on how to fix this yet
+        return self.fetch(self.id)
 
     def getChar(self):
         return self.id

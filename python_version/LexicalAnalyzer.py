@@ -2,7 +2,7 @@ import token
 import tokentype
 import LexicalException
 
-class LexicalAnalyzer():
+class LexicalAnalyzer(token,tokentype):
 
     tokens = []
 
@@ -52,7 +52,7 @@ class LexicalAnalyzer():
                 if lexeme.length() == 1 and self.isValidIdentifier(lexeme.charAt(0)):
                     tokType = tokentype.id
                 elif lexeme.equals("function"):
-                    tokType = tokentype.function_tok
+                    tokType = self.function_tok
                 elif lexeme.equals("end"):
                     tokType = tokentype.end_tok
                 elif lexeme.equals("if"):

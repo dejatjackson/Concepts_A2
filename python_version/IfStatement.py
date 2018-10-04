@@ -1,7 +1,7 @@
 import Statement
 import Block
 
-class if_statement:
+class if_statement(Statement,Block):
     def __init__(self, b_expr, blk1, blk2):
         self.b_expr = b_expr
         self.blk1 = blk1
@@ -12,9 +12,6 @@ class if_statement:
             self.blk1.process()
         else:
             self.blk2.process()
-
-    def Statement(self):
-        #TODO something
 
 
 
