@@ -1,6 +1,6 @@
 import Block
 
-class Program():
+class Program(Block):
     def __init__(self, blk):
         if blk == None:
             raise TypeError("null block argument")

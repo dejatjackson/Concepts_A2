@@ -2,7 +2,7 @@ import Statement
 import Arithmetic_expression
 
 
-class Assignment_statement():
+class Assignment_statement(Statement):
     def __init__(self, var, a_express):
         if a_express == None:
             raise TypeError("null Expression")

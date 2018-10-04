@@ -3,7 +3,7 @@ import Arithmetic_op
 import Relative_op
 import enum
 
-class Binary_expression():
+class Binary_expression(Arithmetic_expression, Arithmetic_op):
 
 
     def __init__(self, op, expr1, expr2):
@@ -18,12 +18,12 @@ class Binary_expression():
     def evaluate(self):
 
         v = 0
-        if self.op == Arithmetic_op.add_operator:
+        if self.op == self.add_operator:
             v = self.expr1.evaluate() + self.expr2.evaluate()
-        elif self.op == Arithmetic_op.mul_operator.value:
+        elif self.op == self.mul_operator:
             v = self.expr1.evaluate() * self.expr2.evaluate()
-        elif self.op == Arithmetic_op.div_operator.value:
+        elif self.op == self.div_operator:
             v = self.expr1.evaluate() / self.expr2.evaluate()
-        elif self.op == Arithmetic_op.sub_operator.value:
+        elif self.op == self.sub_operator:
             v = self.expr1.evaluate() - self.expr2.evaluate()
         return v

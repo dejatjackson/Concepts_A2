@@ -4,7 +4,7 @@ class Memory:
         self.mem = range(53)
         
     def store(self, ch, value):
-        self.mem[self.indexOf(ch)] = value;
+        self.mem[self.indexOf(ch)] = value
 
     def indexOf(self, ch):
 

@@ -6,7 +6,7 @@ class Iter:
             raise ValueError("List cannot be empty!")
 
         else:
-            return tokens[index];
+            return tokens[index]
 
     def getLast(self, index, tokens):
         if tokens[0] is None:
