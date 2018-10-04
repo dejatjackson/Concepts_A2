@@ -1,8 +1,8 @@
 import token
 import tokentype
-import LexicalException
+import LexicalExcpetion
 
-class LexicalAnalyzer(token,tokentype):
+class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
 
     tokens = []
 
@@ -34,80 +34,80 @@ class LexicalAnalyzer(token,tokentype):
                 index += lexeme.length()
                 index = self.skipWhiteSpace(line, index)
         except:
-            raise LexicalException
+            raise LexicalExcpetion
 
 
     def getTokenType(self,lexeme,rowNumber,columnNumber):
         try:
             if lexeme == None or lexeme.length() == 0:
                 raise ValueError("invalid string argument")
-            tokType = tokentype.EOS_TOK
+            tokType = self.EOS_TOK
             if lexeme.charAt(0).isdigit():
                 if self.allDigits(lexeme):
-                    tokType = tokentype.literal_integer #literal_integer → digit literal_integer | digit
+                    tokType = self.literal_integer #digit literal_integer | digit
                 else:
-                  raise LexicalException("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
+                  raise LexicalExcpetion("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
             elif lexeme.charAt(0).isalpha():
 
                 if lexeme.length() == 1 and self.isValidIdentifier(lexeme.charAt(0)):
-                    tokType = tokentype.id
+                    tokType =self.id
                 elif lexeme.equals("function"):
                     tokType = self.function_tok
                 elif lexeme.equals("end"):
-                    tokType = tokentype.end_tok
+                    tokType = self.end_tok
                 elif lexeme.equals("if"):
-                    tokType = tokentype.if_tok
+                    tokType = self.if_tok
                 elif lexeme.equals("else"):
-                    tokType = tokentype.else_tok
+                    tokType = self.else_tok
                 elif lexeme.equals("print"):
-                    tokType = tokentype.print_tok
+                    tokType = self.print_tok
                 elif lexeme.equals("while"):
-                    tokType = tokentype.while_tok
+                    tokType = self.while_tok
                 elif lexeme.equals("for"):
-                    tokType = tokentype.for_tok
+                    tokType = self.for_tok
                 else:
-                    raise LexicalException ( "invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
+                    raise LexicalExcpetion ( "invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
             elif self.isValidIdentifier(lexeme.charAt(0)):
-                tokType = tokentype.id; #id → letter
+                tokType = self.id #letter
             elif lexeme.equals(">="):
-                tokType = tokentype.ge_operator #ge_operator → >=
+                tokType = self.ge_operator #>=
             elif lexeme.equals(">"):
-                tokType = tokentype.gt_operator # gt_operator → >
+                tokType = self.gt_operator #>
             elif lexeme.equals("<="):
-                tokType = tokentype.le_operator #le_operator → <=
+                tokType = self.le_operator #<=
             elif lexeme.equals("<"):
-                tokType = tokentype.lt_operator #lt_operator → <
+                tokType = self.lt_operator #<
             elif lexeme.equals("!="):
-                tokType = tokentype.ne_operator  #ne_operator → <=
+                tokType = self.ne_operator  #<=
             elif lexeme.equals("=="):
-                tokType = tokentype.eq_operator  #eq_operator → = =
+                tokType = self.eq_operator  #= =
             elif lexeme.equals("%"):
-                tokType = tokentype.mod_operator  #mod_operator → = =
+                tokType = self.mod_operator  #%
             elif lexeme.equals("^"):
-                tokType = tokentype.exp_operator #exp_operator → ^
+                tokType = self.exp_operator #^
             elif lexeme.equals("+"):
-                tokType = tokentype.add_operator #add_operator → +
+                tokType = self.add_operator #+
             elif lexeme.equals("-"):
-                tokType = tokentype.sub_operator #sub_operator → -
+                tokType = self.sub_operator #-
             elif lexeme.equals("*"):
-                tokType = tokentype.mul_operator #mul_operator → *
+                tokType = self.mul_operator #*
             elif lexeme.equals("/"):
-                tokType = tokentype.div_operator #div_operator → // *
+                tokType = self.div_operator #// *
             #elif lexeme.equals("\""):
-                #tokType = tokentype.rev_div_operator         #rev_div_operator → \ * /
+                #tokType = self.rev_div_operator         #\ * /
             elif lexeme.equals ("="):
-                tokType = tokentype.assignment_operator #assignment_operator → =
+                tokType = self.assignment_operator #=
             elif lexeme.equals("("):
-                tokType = tokentype.left_parent
+                tokType = self.left_parent
             elif lexeme.equals(")"):
-                tokType = tokentype.right_parent
+                tokType = self.right_parent
             elif lexeme.equals(":"):
-                tokType = tokentype.colon_tok
+                tokType = self.colon_tok
             else:
-                raise LexicalException ("invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
+                raise LexicalExcpetion ("invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
             return tokType
         except:
-            raise LexicalException
+            raise LexicalExcpetion
 
 
     def allDigits(self, lexeme):
@@ -116,7 +116,8 @@ class LexicalAnalyzer(token,tokentype):
         i = 0
         while i < lexeme.size() and lexeme.charAt(i).isdigit():
             i+= 1
-        return i = lexeme.size() #TODO
+        i  = lexeme.size()
+        return i
 
     def getLexeme(self,line, index):
         if line == None:
@@ -137,19 +138,19 @@ class LexicalAnalyzer(token,tokentype):
     def getLookaheadToken(self):
         try:
             if len(self.tokens) == 0:
-                raise LexicalException("no more tokens")
+                raise LexicalExcpetion("no more tokens")
             return self.tokens[0]
 
         except:
-            raise LexicalException
+            raise LexicalExcpetion
 
     def getNextToken(self): #ToDO lexicalExpection part
         try:
             if len(self.tokens) == 0:
-                raise LexicalException("There aren't any more tokens")
+                raise LexicalExcpetion("There aren't any more tokens")
             return self.tokens.remove(0)
         except:
-            raise LexicalException
+            raise LexicalExcpetion
 
 
 

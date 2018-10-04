@@ -1,7 +1,7 @@
 import Relative_op
 import Arithmetic_expression
 
-class Boolean_expression(Relative_op):
+class Boolean_expression(Arithmetic_expression,Relative_op):
 
     def __init__(self,op, expr1, expr2 ):
         if op is None:
