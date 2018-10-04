@@ -9,6 +9,8 @@ class Parser():
 
     def getStatement(self):
 
+    def getPrintStatement(self):
+
     #TODO All of the methods and complete
 
     
