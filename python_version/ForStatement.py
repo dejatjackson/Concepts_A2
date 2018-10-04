@@ -7,8 +7,8 @@ class ForStatement:
         elif blk is None:
             raise ValueError("null black")
 
-        self.bool = bool;
-        self.blk = blk;
+        self.bool = bool
+        self.blk = blk
 
 
     def execute(self):

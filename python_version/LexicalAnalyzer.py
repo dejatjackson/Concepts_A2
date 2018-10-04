@@ -30,7 +30,7 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
             while index < line.length():
                 lexeme = self.getLexeme(line, index)
                 tokType = self.getTokenType(lexeme, lineNumber, index + 1)
-                self.tokens.append(token(tokType, lexeme, lineNumber, index + 1)) #TODO
+                self.tokens.append(super(token,self).__init__(self.tokType, self.lexeme, lineNumber, index + 1)) #TODO
                 index += lexeme.length()
                 index = self.skipWhiteSpace(line, index)
         except:
