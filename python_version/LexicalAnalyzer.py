@@ -9,11 +9,14 @@ class LexicalAnalyzer():
     def __init__(self, filename):
         if filename == None:
             raise TypeError("null file name argument")
-        tokens = [] #TODO: Do I need this line
+        tokens = [] #TODO: Do I need this line - No
         input = raw_input(new File(filename))#TODO what is this in python
         lineNumber = 0
-        while (input.hasNext()) #toDo has next in python
-            line = input.nextLine() #TODO next line in python
+        while (input.hasNext()) #toDo has next in python - it doesn't exist
+            line = input.nextLine() #TODO next line in python - doesn't exist
+
+        #Is line even being used?
+
 
 
     def processLine(self,line,lineNumber):
