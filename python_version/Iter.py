@@ -1,4 +1,6 @@
-class Iter:
+import token
+
+class Iter(token):
 
     def getCurrent(self, index, tokens):
 

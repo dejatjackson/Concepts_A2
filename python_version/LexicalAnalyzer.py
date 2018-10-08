@@ -7,16 +7,17 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
     tokens = []
 
     def __init__(self, filename):
-        if filename == None:
+        if filename is None:
             raise TypeError("null file name argument")
-        tokens = [] #TODO: Do I need this line - No
-        input = raw_input(new File(filename))#TODO what is this in python
         lineNumber = 0
-        while (input.hasNext()) #toDo has next in python - it doesn't exist
-            line = input.nextLine() #TODO next line in python - doesn't exist
-
-        #Is line even being used?
-
+        with open(filename) as f:
+            for x in f:
+                line = x
+                #TODO: what do I do here --> this is what the java version ooed like
+                #input = raw_input(new File(filename))
+                #lineNumber = 0
+                #while (input.hasNext())
+                    #line = input.nextLine()
 
 
     def processLine(self,line,lineNumber):
@@ -46,7 +47,7 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
                 if self.allDigits(lexeme):
                     tokType = self.literal_integer #digit literal_integer | digit
                 else:
-                  raise LexicalExcpetion("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
+                  print("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
             elif lexeme.charAt(0).isalpha():
 
                 if lexeme.length() == 1 and self.isValidIdentifier(lexeme.charAt(0)):
@@ -66,7 +67,7 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
                 elif lexeme.equals("for"):
                     tokType = self.for_tok
                 else:
-                    raise LexicalExcpetion ( "invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
+                    raise LexicalExcpetion
             elif self.isValidIdentifier(lexeme.charAt(0)):
                 tokType = self.id #letter
             elif lexeme.equals(">="):
@@ -104,14 +105,14 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
             elif lexeme.equals(":"):
                 tokType = self.colon_tok
             else:
-                raise LexicalExcpetion ("invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
+                raise LexicalExcpetion
             return tokType
         except:
-            raise LexicalExcpetion
+            print( "invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
 
 
     def allDigits(self, lexeme):
-        if lexeme == None:
+        if lexeme is None:
             raise TypeError("null string argument")
         i = 0
         while i < lexeme.size() and lexeme.charAt(i).isdigit():
@@ -120,7 +121,7 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
         return i
 
     def getLexeme(self,line, index):
-        if line == None:
+        if line is None:
             raise ValueError("null string argument")
         if index < 0:
             raise ValueError("invalid index argument")
@@ -138,24 +139,25 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
     def getLookaheadToken(self):
         try:
             if len(self.tokens) == 0:
-                raise LexicalExcpetion("no more tokens")
+                raise LexicalExcpetion
             return self.tokens[0]
 
         except:
-            raise LexicalExcpetion
+            print("No more tokens")
 
     def getNextToken(self): #ToDO lexicalExpection part
         try:
             if len(self.tokens) == 0:
-                raise LexicalExcpetion("There aren't any more tokens")
+                raise LexicalExcpetion
             return self.tokens.remove(0)
         except:
-            raise LexicalExcpetion
+            print("There aren't any more tokens")
 
 
 
     def getForExpression(self):
 
+        token = []
         for_tokens = token[3]
 
         for i in range (for_tokens.length - 1):
