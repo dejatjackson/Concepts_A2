@@ -2,7 +2,7 @@ import token
 import tokentype
 import LexicalExcpetion
 
-class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
+class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
 
     tokens = []
 
@@ -40,7 +40,9 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
             while index < line.length():
                 lexeme = self.getLexeme(line, index)
                 tokType = self.getTokenType(lexeme, lineNumber, index + 1)
-                self.tokens.append(super(token,self).__init__(self.tokType, self.lexeme, lineNumber, index + 1)) #TODO
+                n_tok = token.token(tokType, lexeme, lineNumber, index + 1)
+                self.tokens.append(n_tok)
+                #tokens.add(new token (tokType, lexeme, lineNumber, index + 1));
                 index += lexeme.length()
                 index = self.skipWhiteSpace(line, index)
         except:
