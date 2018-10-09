@@ -1,7 +1,7 @@
 import enum
 
 
-class tokentype():
+class tokentype(enum.Enum):
     # TODO id, literal_integer, EOS_TOK
     def __init__(self):
 
