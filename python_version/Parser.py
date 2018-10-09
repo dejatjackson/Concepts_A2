@@ -1,20 +1,27 @@
 
 #TODO - complete all methods below
 import ParserException
+import While_statement
 import token
 import PrintStatement
 from tokentype import tokentype
 import Block
+import Literal_Integer
 import Statement
 import Boolean_expression
 import Arithmetic_expression
 import IfStatement
+import ForStatement
 import Binary_expression
 import Arithmetic_op
+from Relative_op import Relative_op
 
 
 
 class Parser():
+
+    global lex
+
     def _init_(self, filename):
         self.filename = filename
 
@@ -39,9 +46,9 @@ class Parser():
             stmt = self.getIfStatement()
         elif tok.getTokType == tokentype.while_tok: #TODO
             stmt = self.getWhileStatement()
-        elif tok.getTokType == tokentype.print_tok:  #TODO
+        elif tok.getTokType == tokentype.tokentype.print_tok:  #TODO
                 stmt = self.getPrintStatement()
-        elif tok.getTokType == tokentype.for_tok: #TODO
+        elif tok.getTokType == tokentype.tokentype.for_tok: #TODO
             stmt = self.getForStatement()
         else if tok.getTokType == tokentype.id: #TODO
             stmt = self.getAssignmentStatement()
@@ -73,19 +80,21 @@ class Parser():
         blk = self.getBlock()
         tok = self.getNextToken()
         self.match(tok, tokentype.end_tok)
-    return #TODO
+        w_stmt = While_statement(expr,blk)
+        return w_stmt
 
 
 
     def getForStatement(self):
         tok = self.getNextToken()
-        self.match(tok, tokentype.for_tok) #TODO
+        self.match(tok, tokentype.for_tok)
         blk = self.getBlock()
         tok = self.getNextToken()
-        self.match(tok,tokentype.colon_tok) #TODO
+        self.match(tok,tokentype.colon_tok)
         expr = self.getBooleanExpression()
-        self.match(tok,tokentype.end_tok) #TODO
-        return #TODO
+        self.match(tok,tokentype.end_tok)
+        f_stat = ForStatement.ForStatement(expr,blk)
+        return f_stat
 
 
     def getIfStatement(self):
@@ -135,7 +144,13 @@ class Parser():
 
     def getLiteralInteger(self):
       # TODO how to i do the throws ParserException thing
-
+        tok = getNextToken();
+        if tok.getTokType() != tokentype.literal_integer:
+            raise ParserException("literal integer expected at row " +
+                    tok.getRowNumber() + " and column " + tok.getColumnNumber())
+        value = Integer.parseInt(tok.getLexeme())
+        lit_int = Literal_integer.Literal_integer(value)
+        return lit_int
 
 def getId(self):
         #TODO how to i do the throws ParserException thing
@@ -154,11 +169,26 @@ def getId(self):
         return b_express
 
     def getRelationalOperator(self):
+        #TODO how to i do the throws ParserException thing
+
+        op = None
         tok = self.getNextToken
-        if(tok.getTokType() == tokentype.eq_operator #TODO
-            op = Relative_op.eq_operator #TODO
-        elif
-       #TODO
+        if tok.getTokType() == tokentype.eq_operator
+            op = Relative_op.eq_operator
+        elif tok.getTokType() == tokentype.ne_operator:
+            op = Relative_op.ne_operator #TODO
+        elif tok.getTokType() == tokentype.gt_operator:
+            op = Relative_op.gt_operator
+        elif tok.getTokType() == tokentype.ge_operator:
+            op = Relative_op.ge_operator
+        elif tok.getTokType() == tokentype.lt_operator:
+            op = Relative_op.lt_operator
+        elif tok.getTokType() == tokentype.le_operator:
+            op = Relative_op.le_operator
+        else
+            raise ParserException ("relational operator expected at row " +
+            tok.getRowNumber()  + " and column " + tok.getColumnNumber()) #TTODO
+        return op
 
     def match(self,tok, tokType):
         #TODO how to i do the throws ParserException thing
@@ -184,11 +214,11 @@ def getId(self):
         # TODO how to i do the throws ParserException thing
 
         tok = None
-            try:
-                tok = lex.getNextToken()
-                raise ParserException
-            except:
-                print("no more tokens")
-            return tok
+        try:
+            tok = lex.getNextToken()
+            raise ParserException
+        except:
+            print("no more tokens")
+        return tok
 
     

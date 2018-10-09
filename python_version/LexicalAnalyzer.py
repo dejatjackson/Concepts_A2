@@ -1,5 +1,5 @@
 import token
-import tokentype
+from tokentype import tokentype
 import LexicalExcpetion
 
 class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
@@ -15,11 +15,8 @@ class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
                 line = x
                 lineNumber += 1
                 self.processLine(self.line, self.lineNumber)
-<<<<<<< HEAD
-        new_tok = token.token(tokentype.tokentype., "EOS", lineNumber, 1)
-=======
-        new_tok = token.token(tokentype.tokentype, "EOS", lineNumber, 1) #TODO
->>>>>>> c1b2bb50f34421400bb72208625d29dec851d7f1
+
+        new_tok = token.token(tokentype, "EOS", lineNumber, 1) #TODO
         self.tokens.append(new_tok)
 
 

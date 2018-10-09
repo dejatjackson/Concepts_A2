@@ -1,8 +1,6 @@
 from enum import Enum
 
-class Relative_op():
-
-	def __init__(self):
+class Relative_op(Enum):
 
 		le_operator = "<="
 		lt_operator = "<"
