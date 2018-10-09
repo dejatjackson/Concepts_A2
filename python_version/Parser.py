@@ -9,9 +9,28 @@ class Parser():
 
     def parse(self):
 
-    def getBlock(self):
+    def getBlock(self): #TODO - I think this is wrong, just saying
+
+        #TODO how to i do the throws ParserException thing
+
+        blk = Block() #TODO
+        tok = getLookaheadToken() #TODO
+        while(isValidStartOfStatement(tok)):
+            Statement.stmt = getStatement() #TODO
+            blk.add(stmt)
+            tok = getLookaheadToken()
+        return blk
 
     def getStatement(self):
+        #TODO how to i do the throws ParserException thing
+        stmt #TODO
+        tok = getLookaheadToken() #TODO
+        if tok.getTokType() == tokentype.if_tok:
+            stmt = getIfStatement()
+        else if tok.getTokType == tokentype.while_tok:
+            stmt = getWhileStatement()
+        else if tok.getTokType ==
+
 
     def getPrintStatement(self):
 
