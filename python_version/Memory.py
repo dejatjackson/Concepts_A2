@@ -14,7 +14,8 @@ class Memory:
         if ch == ch.upper():
             index = ch - 'a'
         else:
-            index = 26 + ch - 'A'
+            index = 26 + ch - 65
+            #A
         return index
 
 

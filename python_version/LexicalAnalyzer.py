@@ -13,11 +13,17 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
         with open(filename) as f:
             for x in f:
                 line = x
+                lineNumber += 1
+                #MISSING TONS OF CODE
                 #TODO: what do I do here --> this is what the java version ooed like
-                #input = raw_input(new File(filename))
-                #lineNumber = 0
                 #while (input.hasNext())
-                    #line = input.nextLine()
+                   # {
+                        #String line = input.nextLine();
+                       # lineNumber++;
+                       # processLine (line, lineNumber);
+                    }
+                   # input.close();
+                   # tokens.add(new token (tokentype.EOS_TOK, "EOS", lineNumber, 1));
 
 
     def processLine(self,line,lineNumber):
