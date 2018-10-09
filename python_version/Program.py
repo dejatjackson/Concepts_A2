@@ -2,7 +2,7 @@ import Block
 
 class Program(Block):
     def __init__(self, blk):
-        if blk == None:
+        if blk is None:
             raise TypeError("null block argument")
         self.blk = blk
 

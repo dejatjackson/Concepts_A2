@@ -2,6 +2,7 @@
 
 class Parser():
     def _init_(self, filename):
+        self.filename = filename
 
     def parse(self):
 
