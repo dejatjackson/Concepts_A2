@@ -2,6 +2,10 @@
 #TODO - complete all methods below
 import ParserException
 import token
+<<<<<<< HEAD
+import Arithmetic_expression
+import PrintStatement
+=======
 import Block
 import Statement
 import Boolean_expression
@@ -9,6 +13,7 @@ import Arthmetic_expression
 import IfStatement
 import Binary_expression
 
+>>>>>>> c1b2bb50f34421400bb72208625d29dec851d7f1
 
 class Parser():
     def _init_(self, filename):
@@ -52,6 +57,15 @@ class Parser():
 
 
     def getPrintStatement(self):
+        tok = self.getNextToken()
+        self.match(tok, tokentype) #TODO
+        tok = self.getNextToken()
+        self.match(tok, tokentype) #TODO
+        expr = Arithmetic_expression.Arithmetic_expression()
+        tok = self.getNextToken
+        self.match(tok, tokentype) #TODO
+        return PrintStatement.PrintStatement(expr)
+
 
     def getWhileStatement(self):
         tok = self.getNextToken()
