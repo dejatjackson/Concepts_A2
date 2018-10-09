@@ -2,17 +2,17 @@
 #TODO - complete all methods below
 import ParserException
 import token
-import Arithmetic_expression
 import PrintStatement
-import tokentype
+from tokentype import tokentype
 import Block
 import Statement
 import Boolean_expression
-import Arthmetic_expression
+import Arithmetic_expression
 import IfStatement
 import Binary_expression
+import Arithmetic_op
 
->>>>>>> c1b2bb50f34421400bb72208625d29dec851d7f1
+
 
 class Parser():
     def _init_(self, filename):
@@ -128,7 +128,10 @@ class Parser():
         return b_express
 
     def getArithmeticOperator(self):
-        #TODO CODE
+        op = Arithmetic_op.Arithmetic_op()
+        tok = self.getNextToken()
+        if tok.getTokType() == tokentype.add_operator():
+            op = arithmetic
 
     def getLiteralInteger(self):
       # TODO how to i do the throws ParserException thing

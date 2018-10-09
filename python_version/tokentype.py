@@ -1,9 +1,7 @@
 import enum
 
-
 class tokentype(enum.Enum):
     # TODO id, literal_integer, EOS_TOK
-    def __init__(self):
 
         function_tok = "function"
         end_tok = "end"
@@ -24,3 +22,4 @@ class tokentype(enum.Enum):
         mul_operator = "*"
         mod_operator = "%"
         exp_operator = "^"
+
