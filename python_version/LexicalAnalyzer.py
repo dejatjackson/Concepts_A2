@@ -14,6 +14,8 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
             for x in f:
                 line = x
                 lineNumber += 1
+                self.processLine(self.line, self.lineNumber)
+        tokens
                 #MISSING TONS OF CODE
                 #TODO: what do I do here --> this is what the java version ooed like
                 #while (input.hasNext())
@@ -21,7 +23,7 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
                         #String line = input.nextLine();
                        # lineNumber++;
                        # processLine (line, lineNumber);
-                    }
+                   # }
                    # input.close();
                    # tokens.add(new token (tokentype.EOS_TOK, "EOS", lineNumber, 1));
 
