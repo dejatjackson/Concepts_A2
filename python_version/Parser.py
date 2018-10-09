@@ -2,6 +2,8 @@
 #TODO - complete all methods below
 import ParserException
 import token
+import Arithmetic_expression
+import PrintStatement
 
 class Parser():
     def _init_(self, filename):
@@ -33,6 +35,15 @@ class Parser():
 
 
     def getPrintStatement(self):
+        tok = self.getNextToken()
+        self.match(tok, tokentype) #TODO
+        tok = self.getNextToken()
+        self.match(tok, tokentype) #TODO
+        expr = Arithmetic_expression.Arithmetic_expression()
+        tok = self.getNextToken
+        self.match(tok, tokentype) #TODO
+        return PrintStatement.PrintStatement(expr)
+
 
     def getWhileStatement(self):
 
