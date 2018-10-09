@@ -15,7 +15,8 @@ class LexicalAnalyzer(token,tokentype,LexicalExcpetion):
                 line = x
                 lineNumber += 1
                 self.processLine(self.line, self.lineNumber)
-        tokens
+        new_tok = token.token(tokentype.tokentype, "EOS", lineNumber, 1)
+        self.tokens.append(new_tok)
                 #MISSING TONS OF CODE
                 #TODO: what do I do here --> this is what the java version ooed like
                 #while (input.hasNext())
