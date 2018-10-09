@@ -1,6 +1,7 @@
 import Statement
 import Arithmetic_expression
 import Memory
+import ID
 
 
 class Assignment_statement(Statement,Memory):

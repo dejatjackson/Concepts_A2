@@ -2,8 +2,17 @@
 #TODO - complete all methods below
 import ParserException
 import token
+<<<<<<< HEAD
 import Arithmetic_expression
 import PrintStatement
+=======
+import Block
+import Statement
+import BooleanExpression
+import ArthmeticExpression
+import IfStatement
+
+>>>>>>> c1b2bb50f34421400bb72208625d29dec851d7f1
 
 class Parser():
     def _init_(self, filename):
@@ -11,27 +20,39 @@ class Parser():
 
     def parse(self):
 
-    def getBlock(self): #TODO - I think this is wrong, just saying
+    def getBlock(self):
 
         #TODO how to i do the throws ParserException thing
 
-        blk = Block() #TODO
-        tok = getLookaheadToken() #TODO
-        while(isValidStartOfStatement(tok)):
-            Statement.stmt = getStatement() #TODO
+        blk = Block.Block() #TODO
+        tok = self.getLookaheadToken()
+        while(self.isValidStartOfStatement(tok)):
+            stmt = self.getStatement() #TODO
             blk.add(stmt)
-            tok = getLookaheadToken()
+            tok = self.getLookaheadToken()
         return blk
 
     def getStatement(self):
         #TODO how to i do the throws ParserException thing
-        stmt #TODO
-        tok = getLookaheadToken() #TODO
-        if tok.getTokType() == tokentype.if_tok:
-            stmt = getIfStatement()
-        else if tok.getTokType == tokentype.while_tok:
-            stmt = getWhileStatement()
-        else if tok.getTokType ==
+        tok = self.getLookaheadToken()
+        if tok.getTokType() == tokentype.if_tok: #TODO
+            stmt = self.getIfStatement()
+        else if tok.getTokType == tokentype.while_tok: #TODO
+            stmt = self.getWhileStatement()
+        else if tok.getTokType == tokentype.print_tok:  #TODO
+                stmt = self.getPrintStatement()
+        else if tok.getTokType == tokentype.for_tok: #TODO
+            stmt = self.getForStatement()
+        else if tok.getTokType == tokentype.id: #TODO
+            stmt = self.getAssignmentStatement()
+        return stmt
+
+    def AssignmentStatement(self):
+        var = self.getID()
+        tok = self.getNextToken()
+        self.match(tok, tokentype.assignment_operator) #TODO
+        expr = self.getArithmeticExpression()
+        return #TODO
 
 
     def getPrintStatement(self):
@@ -46,12 +67,30 @@ class Parser():
 
 
     def getWhileStatement(self):
+        tok = self.getNextToken()
+        self.match(tok, tokentype.while_tok) #TODO
+        expr = self.getBooleanExpression()
+        blk = self.getBlock()
+        tok = self.getNextToken()
+        self.match(tok, tokentype.end_tok)
+    return #TODO
+
+
 
     def getForStatement(self):
+        tok = self.getNextToken()
+        self.match(tok, tokentype.for_tok) #TODO
+        blk = self.getBlock()
+        tok = self.getNextToken()
+        self.match(tok,tokentype.colon_tok) #TODO
+        expr = self.getBooleanExpression()
+        self.match(tok,tokentype.end_tok) #TODO
+        return #TODO
 
-    def getIfStament(self):
 
-    def isValidStartOfStatement(self):
+    def getIfStatement(self):
+
+    def isValidStartOfStatement(self,tok):
 
     def getArithmeticExpression(self):
 
@@ -72,6 +111,7 @@ class Parser():
     def match(self):
 
     def getLookaheadToken(self):
+
 
     def getNextToken(self): #TODO - I think this is wrong, just saying
             tok = null
