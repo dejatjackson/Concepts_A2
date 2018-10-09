@@ -2,10 +2,9 @@
 #TODO - complete all methods below
 import ParserException
 import token
-<<<<<<< HEAD
 import Arithmetic_expression
 import PrintStatement
-=======
+import tokentype
 import Block
 import Statement
 import Boolean_expression
@@ -38,11 +37,11 @@ class Parser():
         tok = self.getLookaheadToken()
         if tok.getTokType() == tokentype.if_tok: #TODO
             stmt = self.getIfStatement()
-        else if tok.getTokType == tokentype.while_tok: #TODO
+        elif tok.getTokType == tokentype.while_tok: #TODO
             stmt = self.getWhileStatement()
-        else if tok.getTokType == tokentype.print_tok:  #TODO
+        elif tok.getTokType == tokentype.print_tok:  #TODO
                 stmt = self.getPrintStatement()
-        else if tok.getTokType == tokentype.for_tok: #TODO
+        elif tok.getTokType == tokentype.for_tok: #TODO
             stmt = self.getForStatement()
         else if tok.getTokType == tokentype.id: #TODO
             stmt = self.getAssignmentStatement()
@@ -153,7 +152,9 @@ def getId(self):
 
     def getRelationalOperator(self):
         tok = self.getNextToken
-
+        if(tok.getTokType() == tokentype.eq_operator #TODO
+            op = Relative_op.eq_operator #TODO
+        elif
        #TODO
 
     def match(self,tok, tokType):
