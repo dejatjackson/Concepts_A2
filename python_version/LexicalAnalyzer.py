@@ -16,7 +16,7 @@ class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
                 lineNumber += 1
                 self.processLine(self.line, self.lineNumber)
 
-        new_tok = token.token(tokentype, "EOS", lineNumber, 1) #TODO
+        new_tok = token.token(tokentype.EOS, "EOS", lineNumber, 1)
         self.tokens.append(new_tok)
 
 

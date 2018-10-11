@@ -34,7 +34,7 @@ class Parser():
         blk = Block.Block() #TODO
         tok = self.getLookaheadToken()
         while(self.isValidStartOfStatement(tok)):
-            stmt = self.getStatement() #TODO
+            stmt = self.getStatement()
             blk.add(stmt)
             tok = self.getLookaheadToken()
         return blk
@@ -42,31 +42,31 @@ class Parser():
     def getStatement(self):
         #TODO how to i do the throws ParserException thing
         tok = self.getLookaheadToken()
-        if tok.getTokType() == tokentype.if_tok: #TODO
+        if tok.getTokType() == tokentype.if_tok:
             stmt = self.getIfStatement()
-        elif tok.getTokType == tokentype.while_tok: #TODO
+        elif tok.getTokType == tokentype.while_tok:
             stmt = self.getWhileStatement()
-        elif tok.getTokType == tokentype.tokentype.print_tok:  #TODO
+        elif tok.getTokType == tokentype.tokentype.print_tok:
                 stmt = self.getPrintStatement()
-        elif tok.getTokType == tokentype.tokentype.for_tok: #TODO
+        elif tok.getTokType == tokentype.tokentype.for_tok:
             stmt = self.getForStatement()
-        else if tok.getTokType == tokentype.id: #TODO
+        elif tok.getTokType == tokentype.id:
             stmt = self.getAssignmentStatement()
-        return stmt
+        return stmt #TODO
 
-    def AssignmentStatement(self):
-        var = self.getID()
+    def getAssignmentStatement(self):
+        var = self.getId()
         tok = self.getNextToken()
-        self.match(tok, tokentype.assignment_operator) #TODO
+        self.match(tok, tokentype.assignment_operator)
         expr = self.getArithmeticExpression()
         return #TODO
 
 
     def getPrintStatement(self):
         tok = self.getNextToken()
-        self.match(tok, tokentype) #TODO
+        self.match(tok, tokentype)
         tok = self.getNextToken()
-        self.match(tok, tokentype) #TODO
+        self.match(tok, tokentype)
         expr = Arithmetic_expression.Arithmetic_expression()
         tok = self.getNextToken
         self.match(tok, tokentype) #TODO
@@ -75,12 +75,12 @@ class Parser():
 
     def getWhileStatement(self):
         tok = self.getNextToken()
-        self.match(tok, tokentype.while_tok) #TODO
+        self.match(tok, tokentype.while_tok)
         expr = self.getBooleanExpression()
         blk = self.getBlock()
         tok = self.getNextToken()
         self.match(tok, tokentype.end_tok)
-        w_stmt = While_statement(expr,blk)
+        w_stmt = While_statement.While_statement(expr,blk)
         return w_stmt
 
 
@@ -99,38 +99,39 @@ class Parser():
 
     def getIfStatement(self):
         tok = self.getNextToken()
-        self.match(tok,tokentype.if_tok) #TODO
+        self.match(tok,tokentype.if_tok)
         expr = self.getBooleanExpression()
         blk1 = self.getBlock()
         tok = self.getNextToken()
-        self.match(tok,tokentype.else_tok) #TODO
+        self.match(tok,tokentype.else_tok)
         blk2 = self.getBlock()
         tok = self.getNextToken()
-        self.match(tok, tokentype.end_tok) #TODO
+        self.match(tok, tokentype.end_tok)
         f_stat = IfStatement.if_statement(expr, blk1, blk2)
         return f_stat
 
     def isValidStartOfStatement(self,tok):
         assert(tok != None)
-        return tok.getTokType() == tokentype.id || tok.getTokType() == tokentype.if_tok ||
-                tok.getTokType() == tokentype.while_tok || tok.getTokType() == tokentype.print_tok }}
-                tok.getTokType() == tokentype.for_tok #TODO
+        return tok.getTokType() == tokentype.id or  tok.getTokType() == tokentype.if_tok or tok.getTokType() == tokentype.while_tok or tok.getTokType() == tokentype.print_tok or tok.getTokType() == tokentype.for_tok
 
 
     def getArithmeticExpression(self):
-        #TODO how to i do the throws ParserException thing
-        tok = self.getLookaheadToken
-        if tok.getTokType() == tokentype.id: #TODO
-            expr = self.getID()
-        elif tok.getTokType() == tokentype.literal_integer: #TODO
-            expr = self.getLiteralInteger()
-        else:
-            expr = self.getBinaryExpression()
-        return expr
+        try:
+            tok = self.getLookaheadToken
+            if tok.getTokType() == tokentype.id: #TODO
+                expr = self.getId()
+            elif tok.getTokType() == tokentype.literal_integer: #TODO
+                expr = self.getLiteralInteger()
+            else:
+                expr = self.getBinaryExpression()
+            return expr
+        except:
+            raise ParserException
+
 
 
     def getBinaryExpression(self):
-        op = self.getArithmeticOperaor()
+        op = self.getArithmeticOperator()
         expr1 = self.getArithmeticExpression()
         expr2 = self.getArithmeticExpression()
         b_express = Binary_expression.Binary_expression(op,expr1,expr2)
@@ -140,54 +141,58 @@ class Parser():
         op = Arithmetic_op.Arithmetic_op()
         tok = self.getNextToken()
         if tok.getTokType() == tokentype.add_operator():
-            op = arithmetic
+            op = arithmetic #TODO
 
     def getLiteralInteger(self):
-      # TODO how to i do the throws ParserException thing
-        tok = getNextToken();
-        if tok.getTokType() != tokentype.literal_integer:
-            raise ParserException("literal integer expected at row " +
-                    tok.getRowNumber() + " and column " + tok.getColumnNumber())
-        value = Integer.parseInt(tok.getLexeme())
-        lit_int = Literal_integer.Literal_integer(value)
-        return lit_int
+        try:
+            tok = self.getNextToken()
+            if tok.getTokType() != tokentype.literal_integer:
+                raise ParserException("literal integer expected at row " + tok.getRowNumber() + " and column " + tok.getColumnNumber()) #TODO
+            value = Integer.parseInt(tok.getLexeme()) #TODO
+            lit_int = Literal_Integer.Literal_integer(value)
+            return lit_int
+        except:
+            raise ParserException
 
-def getId(self):
-        #TODO how to i do the throws ParserException thing
-
-        tok = self.getNextToken()
-        if tok.getTokType() != tokentype.id: #TODO
-            #TODO exception
-        return #TODO
+    def getId(self):
+        try:
+            tok = self.getNextToken()
+            if tok.getTokType() != tokentype.id:
+                #TODO exception
+            return #TODO
+        except:
+            raise ParserException
 
     def getBooleanExpression(self):
         #TODO how to i do the throws ParserException thing
-        op = self.getRelationalOperator()
-        expr1 = self.getArthimeticExpression()
-        expr2 = self.getArthimeticExpression()
-        b_express = Boolean_expression.Boolean_expression(op,expr1,expr2)
-        return b_express
+        try:
+            op = self.getRelationalOperator()
+            expr1 = self.getArithmeticExpression()
+            expr2 = self.getArithmeticExpression()
+            b_express = Boolean_expression.Boolean_expression(op,expr1,expr2)
+            return b_express
+        except:
+            raise ParserException
 
     def getRelationalOperator(self):
         #TODO how to i do the throws ParserException thing
 
         op = None
         tok = self.getNextToken
-        if tok.getTokType() == tokentype.eq_operator
+        if tok.getTokType() == tokentype.eq_operator: #TODO
             op = Relative_op.eq_operator
-        elif tok.getTokType() == tokentype.ne_operator:
-            op = Relative_op.ne_operator #TODO
-        elif tok.getTokType() == tokentype.gt_operator:
+        elif tok.getTokType() == tokentype.ne_operator: #TODO
+            op = Relative_op.ne_operator
+        elif tok.getTokType() == tokentype.gt_operator: #TODO
             op = Relative_op.gt_operator
-        elif tok.getTokType() == tokentype.ge_operator:
+        elif tok.getTokType() == tokentype.ge_operator: #TODO
             op = Relative_op.ge_operator
-        elif tok.getTokType() == tokentype.lt_operator:
+        elif tok.getTokType() == tokentype.lt_operator: #TODO
             op = Relative_op.lt_operator
-        elif tok.getTokType() == tokentype.le_operator:
+        elif tok.getTokType() == tokentype.le_operator: #TODO
             op = Relative_op.le_operator
-        else
-            raise ParserException ("relational operator expected at row " +
-            tok.getRowNumber()  + " and column " + tok.getColumnNumber()) #TTODO
+        else:
+            raise ParserException ("relational operator expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber()) #TODO
         return op
 
     def match(self,tok, tokType):
@@ -198,8 +203,7 @@ def getId(self):
         if tok.getTokType() != tokType:
             raise #TODO
 
-    def getLookaheadToken(self): #TODO - I think this is wrong, just saying
-        #TODO how to i do the throws ParserException thing
+    def getLookaheadToken(self):
 
         tok = None
         try:
@@ -210,8 +214,7 @@ def getId(self):
         return tok
 
 
-    def getNextToken(self): #TODO - I think this is wrong, just saying
-        # TODO how to i do the throws ParserException thing
+    def getNextToken(self):
 
         tok = None
         try:
