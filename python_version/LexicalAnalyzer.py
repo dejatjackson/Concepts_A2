@@ -109,7 +109,7 @@ class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
             else:
                 raise LexicalExcpetion
             return tokType
-        except:
+        except LexicalExcpetion:
             print( "invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
 
 
@@ -144,7 +144,7 @@ class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
                 raise LexicalExcpetion
             return self.tokens[0]
 
-        except:
+        except LexicalExcpetion:
             print("No more tokens")
 
     def getNextToken(self): #ToDO lexicalExpection part
@@ -152,7 +152,7 @@ class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
             if len(self.tokens) == 0:
                 raise LexicalExcpetion
             return self.tokens.remove(0)
-        except:
+        except LexicalExcpetion:
             print("There aren't any more tokens")
 
 

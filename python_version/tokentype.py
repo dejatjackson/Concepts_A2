@@ -22,3 +22,6 @@ class tokentype(enum.Enum):
         mul_operator = "*"
         mod_operator = "%"
         exp_operator = "^"
+        left_parent = "("
+        right_parent = ")"
+        colon_tok = ":"
