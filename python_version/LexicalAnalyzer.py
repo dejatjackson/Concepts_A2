@@ -27,7 +27,7 @@ class LexicalAnalyzer():
             raise ValueError("invalid line number argument")
         index = self.skipWhiteSpace(line, 0)
 
-        while index < line.length():
+        while index < len(line):
             lexeme = self.getLexeme(line, index)
             tokType = self.getTokenType(lexeme, lineNumber, index + 1)
             n_tok = token(tokType, lexeme, lineNumber, index + 1)
@@ -127,12 +127,12 @@ class LexicalAnalyzer():
         if index < 0:
             raise ValueError("invalid index argument")
         i = index
-        while i < line.length() and not line.charAt(i).isspace():
+        while i < len(line) and not line[i].isspace():
             i += 1
         return line.substring(index, i)
 
     def skipWhiteSpace(self, line, index):
-        while index < len(line) and line.charAt(index).isspace():
+        while index < len(line) and line[index].isspace():
             index += 1
         return index
 
