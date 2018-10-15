@@ -1,0 +1,28 @@
+import Parser
+import ParserException
+import Program
+import LexicalExcpetion
+
+
+class Interpeter:
+    pass
+
+def main():
+    try:
+        parse = Parser.Parser("test4.jl")
+        pro = Program.Program(parse)
+        pro.parse()     #TODO
+
+    except ParserException:
+        print("Parser Exception")
+    except LexicalExcpetion:
+        print("Lexical Exception")
+    except ValueError:
+        print("Illegal Argument")
+    except Exception:
+        print ("An exception has occurred")
+
+
+    if __name__ == '__main__':
+        main()
+
