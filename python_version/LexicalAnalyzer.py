@@ -43,68 +43,68 @@ class LexicalAnalyzer():
         try:
             if lexeme == None or lexeme.length() == 0:
                 raise ValueError("invalid string argument")
-            tokType = self.EOS_TOK
+            tokType = tokentype.EOS_TOK
             if lexeme.charAt(0).isdigit():
                 if self.allDigits(lexeme):
-                    tokType = self.literal_integer #digit literal_integer | digit
+                    tokType = tokentype.literal_integer #digit literal_integer | digit
                 else:
                   print("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
             elif lexeme.charAt(0).isalpha():
 
                 if lexeme.length() == 1 and self.isValidIdentifier(lexeme.charAt(0)):
-                    tokType =self.id
+                    tokType = tokentype.id
                 elif lexeme.equals("function"):
-                    tokType = self.function_tok
+                    tokType = tokentype.function_tok
                 elif lexeme.equals("end"):
-                    tokType = self.end_tok
+                    tokType = tokentype.end_tok
                 elif lexeme.equals("if"):
-                    tokType = self.if_tok
+                    tokType = tokentype.if_tok
                 elif lexeme.equals("else"):
-                    tokType = self.else_tok
+                    tokType = tokentype.else_tok
                 elif lexeme.equals("print"):
-                    tokType = self.print_tok
+                    tokType = tokentype.print_tok
                 elif lexeme.equals("while"):
-                    tokType = self.while_tok
+                    tokType = tokentype.while_tok
                 elif lexeme.equals("for"):
-                    tokType = self.for_tok
+                    tokType = tokentype.for_tok
                 else:
                     raise LexicalExcpetion
             elif self.isValidIdentifier(lexeme.charAt(0)):
-                tokType = self.id #letter
+                tokType = tokentype.id #letter
             elif lexeme.equals(">="):
-                tokType = self.ge_operator #>=
+                tokType = tokentype.ge_operator #>=
             elif lexeme.equals(">"):
-                tokType = self.gt_operator #>
+                tokType = tokentype.gt_operator #>
             elif lexeme.equals("<="):
-                tokType = self.le_operator #<=
+                tokType = tokentype.le_operator #<=
             elif lexeme.equals("<"):
-                tokType = self.lt_operator #<
+                tokType = tokentype.lt_operator #<
             elif lexeme.equals("!="):
-                tokType = self.ne_operator  #<=
+                tokType = tokentype.ne_operator  #<=
             elif lexeme.equals("=="):
-                tokType = self.eq_operator  #= =
+                tokType = tokentype.eq_operator  #= =
             elif lexeme.equals("%"):
-                tokType = self.mod_operator  #%
+                tokType = tokentype.mod_operator  #%
             elif lexeme.equals("^"):
-                tokType = self.exp_operator #^
+                tokType = tokentype.exp_operator #^
             elif lexeme.equals("+"):
-                tokType = self.add_operator #+
+                tokType = tokentype.add_operator #+
             elif lexeme.equals("-"):
-                tokType = self.sub_operator #-
+                tokType = tokentype.sub_operator #-
             elif lexeme.equals("*"):
-                tokType = self.mul_operator #*
+                tokType = tokentype.mul_operator #*
             elif lexeme.equals("/"):
-                tokType = self.div_operator #// *
+                tokType = tokentype.div_operator #// *
             #elif lexeme.equals("\""):
                 #tokType = self.rev_div_operator         #\ * /
             elif lexeme.equals ("="):
-                tokType = self.assignment_operator #=
+                tokType = tokentype.assignment_operator #=
             elif lexeme.equals("("):
-                tokType = self.left_parent
+                tokType = tokentype.left_parent
             elif lexeme.equals(")"):
-                tokType = self.right_parent
+                tokType = tokentype.right_parent
             elif lexeme.equals(":"):
-                tokType = self.colon_tok
+                tokType = tokentype.colon_tok
             else:
                 raise LexicalExcpetion
             return tokType
