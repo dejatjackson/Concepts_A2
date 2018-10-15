@@ -128,7 +128,6 @@ class Parser():
             self.match(tok,tokentype.end_tok)
             f_stat = ForStatement.ForStatement(expr,blk)
             return f_stat
-
         except:
             raise ParserException
 
@@ -217,7 +216,7 @@ class Parser():
         try:
             if tok.getTokType() != tokentype.id:
                 raise ParserException
-            return ID.ID(tok.getLexeme().charAt(0)) #TODO - Can you do this in python?
+            return ID.ID(tok.getLexeme().charAt(0))
         except ParserException:
             print("identifier expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())
 

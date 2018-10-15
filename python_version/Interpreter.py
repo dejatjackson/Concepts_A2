@@ -9,8 +9,8 @@ class Interpeter:
     #TODO
     def main(self):
         try:
-            parse = Parser("test4.jl")
-            pro = Program(parse)
+            parse = Parser.Parser("test4.jl")
+            pro = Program.Program(parse)
             pro.parse()
         except ParserException:
             print('Parser Exception')
