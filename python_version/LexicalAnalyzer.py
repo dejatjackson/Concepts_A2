@@ -41,17 +41,17 @@ class LexicalAnalyzer():
 
     def getTokenType(self,lexeme,rowNumber,columnNumber):
         try:
-            if lexeme == None or lexeme.length() == 0:
+            if lexeme == None or len(lexeme) == 0:
                 raise ValueError("invalid string argument")
             tokType = tokentype.EOS_TOK
-            if lexeme.charAt(0).isdigit():
+            if lexeme[0].isdigit():
                 if self.allDigits(lexeme):
                     tokType = tokentype.literal_integer #digit literal_integer | digit
                 else:
                   print("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
-            elif lexeme.charAt(0).isalpha():
+            elif lexeme[0].isalpha():
 
-                if lexeme.length() == 1 and self.isValidIdentifier(lexeme.charAt(0)):
+                if len(lexeme) == 1 and self.isValidIdentifier(lexeme.charAt(0)):
                     tokType = tokentype.id
                 elif lexeme.equals("function"):
                     tokType = tokentype.function_tok
@@ -129,7 +129,7 @@ class LexicalAnalyzer():
         i = index
         while i < len(line) and not line[i].isspace():
             i += 1
-        return line.substring(index, i)
+        return line[index:i]
 
     def skipWhiteSpace(self, line, index):
         while index < len(line) and line[index].isspace():
