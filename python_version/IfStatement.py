@@ -1,7 +1,7 @@
 from Statement import Statement
-import Block
+from Block import Block
 
-class if_statement(Statement,Block):
+class if_statement(Statement):
     def __init__(self, b_expr, blk1, blk2):
         self.b_expr = b_expr
         self.blk1 = blk1

@@ -1,4 +1,4 @@
-import Block
+from Block import Block
 
 class Program(Block):
     def __init__(self, blk):
