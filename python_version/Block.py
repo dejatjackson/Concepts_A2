@@ -5,8 +5,8 @@ class Block:
 	def __init__(self):
 		ar = []
 
-	def __init__(self, statement):
-		self.ar.append(statement)
+	#def __init__(self, statement):
+		#self.ar.append(statement)
 
 	def add(self,statement):
 		if self.ar is None:
