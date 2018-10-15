@@ -12,7 +12,6 @@ def main():
         parse = Parser("test4.jl")
         pro = Program.Program(parse)
         pro.execute()
-
     except ParserException:
         print (traceback.print_exc())
         print("Parser Exception")
