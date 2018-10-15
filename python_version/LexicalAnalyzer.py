@@ -13,9 +13,8 @@ class LexicalAnalyzer():
         with open(filename) as f:
             for line in f:
                 lineNumber += 1
-                self.processLine(line, lineNumber) #TODO
-
-        new_tok = token(tokentype.EOS, "EOS", lineNumber, 1)
+                self.processLine(line, lineNumber)
+        new_tok = token(tokentype.EOS_TOK, "EOS", lineNumber, 1)
         self.tokens.append(new_tok)
 
 
