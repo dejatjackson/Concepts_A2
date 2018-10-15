@@ -18,7 +18,7 @@ import Binary_expression
 import ID
 from Arithmetic_op import Arithmetic_op
 from Relative_op import Relative_op
-
+import LexicalAnalyzer
 
 
 class Parser():
@@ -26,7 +26,7 @@ class Parser():
     global lex
 
     def _init_(self, filename):
-        self.filename = filename
+        lex = LexicalAnalyzer.LexicalAnalyzer(filename)
 
     def parse(self):
         try:

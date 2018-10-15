@@ -1,8 +1,8 @@
-import token
+from token import token
 from tokentype import tokentype
 import LexicalExcpetion
 
-class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
+class LexicalAnalyzer(token, tokentype):
 
     tokens = []
 
@@ -16,7 +16,7 @@ class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
                 lineNumber += 1
                 self.processLine(self.line, self.lineNumber)
 
-        new_tok = token.token(tokentype.EOS, "EOS", lineNumber, 1)
+        new_tok = token(tokentype.EOS, "EOS", lineNumber, 1)
         self.tokens.append(new_tok)
 
 
@@ -31,7 +31,7 @@ class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
             while index < line.length():
                 lexeme = self.getLexeme(line, index)
                 tokType = self.getTokenType(lexeme, lineNumber, index + 1)
-                n_tok = token.token(tokType, lexeme, lineNumber, index + 1)
+                n_tok = token(tokType, lexeme, lineNumber, index + 1)
                 self.tokens.append(n_tok)
                 #tokens.add(new token (tokType, lexeme, lineNumber, index + 1));
                 index += lexeme.length()
@@ -147,7 +147,7 @@ class LexicalAnalyzer(token, tokentype, LexicalExcpetion):
         except LexicalExcpetion:
             print("No more tokens")
 
-    def getNextToken(self): #ToDO lexicalExpection part
+    def getNextToken(self): 
         try:
             if len(self.tokens) == 0:
                 raise LexicalExcpetion

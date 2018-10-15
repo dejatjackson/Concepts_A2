@@ -1,4 +1,4 @@
-import Parser
+from Parser import Parser
 import ParserException
 import Program
 import LexicalExcpetion
@@ -9,7 +9,7 @@ class Interpeter:
 
 def main():
     try:
-        parse = Parser.Parser("test4.jl")
+        parse = Parser("test4.jl")
         pro = Program.Program(parse)
         pro.execute()
 
