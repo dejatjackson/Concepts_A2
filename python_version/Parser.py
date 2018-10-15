@@ -262,7 +262,7 @@ class Parser():
             if tok.getTokType() != tokType:
                 raise ParserException
         except:
-            print(tokType + " expected at row " + tok.getRowNumber() + " and column " + tok.getColumnNumber())
+            print(str(tokType) + " expected at row " + str(tok.getRowNumber()) + " and column " + str(tok.getColumnNumber()))
 
     def getLookaheadToken(self):
 
