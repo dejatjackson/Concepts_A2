@@ -25,3 +25,6 @@ class tokentype(enum.Enum):
         left_parent = "("
         right_parent = ")"
         colon_tok = ":"
+        EOS_TOK = "EOS_TOK"
+        literal_integer = "literal_integer"
+        id = "id"
