@@ -1,5 +1,6 @@
 
 class Block:
+	global ar
 
 	def __init__(self):
 		ar = []
