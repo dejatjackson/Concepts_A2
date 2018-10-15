@@ -1,4 +1,6 @@
-class ForStatement:
+from Statement import Statement
+
+class ForStatemen(Statement):
 
     def __init__( self, bool, blk):
 
