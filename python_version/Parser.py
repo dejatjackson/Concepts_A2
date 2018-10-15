@@ -261,7 +261,7 @@ class Parser():
                 raise ParserException
         except ParserException:
             print(str(tokType) + " expected at row " + str(tok.getRowNumber()) + " and column " + str(tok.getColumnNumber()))
-
+            
     def getLookaheadToken(self):
 
         tok = None
