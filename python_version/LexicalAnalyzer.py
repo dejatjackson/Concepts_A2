@@ -20,23 +20,23 @@ class LexicalAnalyzer():
 
 
     def processLine(self,line,lineNumber):
-        try:
-            if line == None:
-                raise ValueError("null line argument")
-            if lineNumber <= 0:
-                raise ValueError("invalid line number argument")
-            index = self.skipWhiteSpace(line, 0)
+        #try:
+        if line == None:
+            raise ValueError("null line argument")
+        if lineNumber <= 0:
+            raise ValueError("invalid line number argument")
+        index = self.skipWhiteSpace(line, 0)
 
-            while index < line.length():
-                lexeme = self.getLexeme(line, index)
-                tokType = self.getTokenType(lexeme, lineNumber, index + 1)
-                n_tok = token(tokType, lexeme, lineNumber, index + 1)
-                self.tokens.append(n_tok)
-                #tokens.add(new token (tokType, lexeme, lineNumber, index + 1));
-                index += lexeme.length()
-                index = self.skipWhiteSpace(line, index)
-        except:
-            raise LexicalExcpetion
+        while index < line.length():
+            lexeme = self.getLexeme(line, index)
+            tokType = self.getTokenType(lexeme, lineNumber, index + 1)
+            n_tok = token(tokType, lexeme, lineNumber, index + 1)
+            self.tokens.append(n_tok)
+            #tokens.add(new token (tokType, lexeme, lineNumber, index + 1));
+            index += lexeme.length()
+            index = self.skipWhiteSpace(line, index)
+        #except:
+            #raise LexicalExcpetion
 
 
     def getTokenType(self,lexeme,rowNumber,columnNumber):
