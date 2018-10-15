@@ -1,5 +1,4 @@
 
-#TODO - complete all methods below
 import ParserException
 import Assignment_statement
 import While_statement
@@ -256,13 +255,12 @@ class Parser():
 
     def match(self,tok, tokType):
         try:
-
-            assert(tok != None)
-            assert(tokType != None)
+            assert(tok is not None)
+            assert(tokType is not None)
             if tok.getTokType() != tokType:
                 raise ParserException
-        except:
-            print(tokType + " expected at row " + tok.getRowNumber() + " and column " + tok.getColumnNumber())
+        except ParserException:
+            print(str(tokType) + " expected at row " + str(tok.getRowNumber()) + " and column " + str(tok.getColumnNumber()))
 
     def getLookaheadToken(self):
 
