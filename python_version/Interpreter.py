@@ -12,18 +12,18 @@ def main():
         parse = Parser("test1.jl")
         pro = parse.parse()
         pro.execute()
-    except ParserException:
+    except ParserException as e:
         print (traceback.print_exc())
-        print("Parser Exception")
-    except LexicalExcpetion:
+        print(e.message)
+    except LexicalExcpetion as e:
         print (traceback.print_exc())
-        print("Lexical Exception")
-    except ValueError:
+        print(e.message)
+    except ValueError as e:
         print (traceback.print_exc())
-        print("Illegal Argument")
-    except Exception:
+        print (e.message)
+    except Exception as e:
         print (traceback.print_exc())
-        print("An error has occured")
+        print (e.message)
 
 
 if __name__ == '__main__':

@@ -17,6 +17,7 @@ class token():
 
     def getTokType(self):
         return self.tokType
+
     def getLexeme(self):
         return self.lexeme
 
