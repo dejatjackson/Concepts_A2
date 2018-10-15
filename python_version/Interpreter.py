@@ -16,8 +16,11 @@ class Interpeter:
             print('Parser Exception')
             #TODO: What's the right way to do this?
         except LexicalExcpetion:
-            print('Lexical Exception')
-        except IllegalArgumentException:
+            print("Lexical Exception")
+        except ValueError:
+            print("Illegal Argument")
+        except Exception:
+            print ("An exception has occured")
     if __name__ == '__main__':
         main()
 
