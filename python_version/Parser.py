@@ -62,8 +62,8 @@ class Parser():
 
     def getStatement(self):
 
+        tok = self.getLookaheadToken()
         try:
-            tok = self.getLookaheadToken()
             if tok.getTokType() == tokentype.if_tok:
                 stmt = self.getIfStatement()
             elif tok.getTokType == tokentype.while_tok:
@@ -78,7 +78,7 @@ class Parser():
                 raise ParserException
             return stmt
         except ParserException:
-            print("invalid statement at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber()) #TODO
+            print("invalid statement at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())
 
     def getAssignmentStatement(self):
         try:
@@ -151,7 +151,7 @@ class Parser():
 
     def isValidStartOfStatement(self,tok):
         assert(tok != None)
-        return tok.getTokType() == tokentype.id or  tok.getTokType() == tokentype.if_tok or tok.getTokType() == tokentype.while_tok or tok.getTokType() == tokentype.print_tok or tok.getTokType() == tokentype.for_tok
+        return tok.getTokType() == tokentype.id or tok.getTokType() == tokentype.if_tok or tok.getTokType() == tokentype.while_tok or tok.getTokType() == tokentype.print_tok or tok.getTokType() == tokentype.for_tok
 
 
     def getArithmeticExpression(self):
@@ -180,9 +180,10 @@ class Parser():
             raise ParserException
 
     def getArithmeticOperator(self):
+        op = Arithmetic_op.Arithmetic_op()
+        tok = self.getNextToken()
         try:
-            op = Arithmetic_op.Arithmetic_op()
-            tok = self.getNextToken()
+
             if tok.getTokType() == tokentype.add_operator:
                 op = Arithmetic_op.add_operator
             elif tok.getTokType() == tokentype.sub_operator:
@@ -195,13 +196,13 @@ class Parser():
                 raise ParserException
             return op
         except ParserException:
-            print("arithmetic operator expected at row " + tok.getRowNumber() + " and column " + tok.getColumnNumber()) #TODO
+            print("arithmetic operator expected at row " + tok.getRowNumber() + " and column " + tok.getColumnNumber())
 
 
 
     def getLiteralInteger(self):
+        tok = self.getNextToken()
         try:
-            tok = self.getNextToken()
             if tok.getTokType() != tokentype.literal_integer:
                 raise ParserException
             value = Integer.parseInt(tok.getLexeme()) #TODO
@@ -211,13 +212,14 @@ class Parser():
             print("literal integer expected at row " + tok.getRowNumber() + " and column " + tok.getColumnNumber())
 
     def getId(self):
+        tok = self.getNextToken()
+
         try:
-            tok = self.getNextToken()
             if tok.getTokType() != tokentype.id:
                 raise ParserException
             return ID.ID(tok.getLexeme().charAt(0)) #TODO - Can you do this in python?
         except ParserException:
-            print("identifier expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber()) #TODO
+            print("identifier expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())
 
     def getBooleanExpression(self):
         try:
@@ -230,10 +232,10 @@ class Parser():
             raise ParserException
 
     def getRelationalOperator(self):
-
+        op = None
+        tok = self.getNextToken()
         try:
-            op = None
-            tok = self.getNextToken()
+
             if tok.getTokType() == tokentype.eq_operator:
                 op = Relative_op.eq_operator
             elif tok.getTokType() == tokentype.ne_operator:
@@ -250,7 +252,7 @@ class Parser():
                 raise ParserException#
             return op
         except ParserException:
-            print("relational operator expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber()) #TODO
+            print("relational operator expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())
 
     def match(self,tok, tokType):
         try:
