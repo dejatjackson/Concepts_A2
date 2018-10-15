@@ -33,7 +33,7 @@ class LexicalAnalyzer():
             n_tok = token(tokType, lexeme, lineNumber, index + 1)
             self.tokens.append(n_tok)
             #tokens.add(new token (tokType, lexeme, lineNumber, index + 1));
-            index += lexeme.length()
+            index += len(lexeme)
             index = self.skipWhiteSpace(line, index)
         #except:
             #raise LexicalExcpetion
@@ -51,7 +51,7 @@ class LexicalAnalyzer():
                   print("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
             elif lexeme[0].isalpha():
 
-                if len(lexeme) == 1 and self.isValidIdentifier(lexeme.charAt(0)):
+                if len(lexeme) == 1 and self.isValidIdentifier(lexeme[0]):
                     tokType = tokentype.id
                 elif lexeme is "function":
                     tokType = tokentype.function_tok
@@ -68,42 +68,42 @@ class LexicalAnalyzer():
                 elif lexeme is "for":
                     tokType = tokentype.for_tok
                 else:
-                    raise LexicalExcpetion
+                    print("Lexical Exception")
             elif self.isValidIdentifier(lexeme[0]):
                 tokType = tokentype.id #letter
-            elif lexeme.equals(">="):
+            elif lexeme is ">=":
                 tokType = tokentype.ge_operator #>=
-            elif lexeme.equals(">"):
+            elif lexeme is ">":
                 tokType = tokentype.gt_operator #>
-            elif lexeme.equals("<="):
+            elif lexeme is "<=":
                 tokType = tokentype.le_operator #<=
-            elif lexeme.equals("<"):
+            elif lexeme is "<":
                 tokType = tokentype.lt_operator #<
-            elif lexeme.equals("!="):
+            elif lexeme is "!=":
                 tokType = tokentype.ne_operator  #<=
-            elif lexeme.equals("=="):
+            elif lexeme is"==":
                 tokType = tokentype.eq_operator  #= =
-            elif lexeme.equals("%"):
+            elif lexeme is "%":
                 tokType = tokentype.mod_operator  #%
-            elif lexeme.equals("^"):
+            elif lexeme is "^":
                 tokType = tokentype.exp_operator #^
-            elif lexeme.equals("+"):
+            elif lexeme is "+":
                 tokType = tokentype.add_operator #+
-            elif lexeme.equals("-"):
+            elif lexeme is"-":
                 tokType = tokentype.sub_operator #-
-            elif lexeme.equals("*"):
+            elif lexeme is "*":
                 tokType = tokentype.mul_operator #*
-            elif lexeme.equals("/"):
+            elif lexeme is "/":
                 tokType = tokentype.div_operator #// *
             #elif lexeme.equals("\""):
                 #tokType = self.rev_div_operator         #\ * /
-            elif lexeme.equals ("="):
+            elif lexeme is "=":
                 tokType = tokentype.assignment_operator #=
-            elif lexeme.equals("("):
+            elif lexeme is"(":
                 tokType = tokentype.left_parent
-            elif lexeme.equals(")"):
+            elif lexeme is ")":
                 tokType = tokentype.right_parent
-            elif lexeme.equals(":"):
+            elif lexeme is ":":
                 tokType = tokentype.colon_tok
             else:
                 raise LexicalExcpetion
@@ -118,7 +118,7 @@ class LexicalAnalyzer():
         i = 0
         while i < len(lexeme) and lexeme[i].isdigit():
             i += 1
-        i = lexeme.size()
+        i = len(lexeme)
         return i
 
     def getLexeme(self,line, index):

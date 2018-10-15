@@ -4,7 +4,7 @@ class token():
     def __init__(self, tokType, lexeme, rowNumber, colNumber):
         if tokType == None:
             raise TypeError("null TokenType argument")
-        if lexeme == None or lexeme.length() == 0:
+        if lexeme == None or len(lexeme) == 0:
             raise TypeError("invalid lexeme argument")
         if rowNumber <= 0:
             raise TypeError("invalid row number argument")
