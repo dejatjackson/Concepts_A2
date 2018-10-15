@@ -14,10 +14,13 @@ def main():
         pro.execute()
 
     except ParserException:
+        print (traceback.print_exc())
         print("Parser Exception")
     except LexicalExcpetion:
+        print (traceback.print_exc())
         print("Lexical Exception")
     except ValueError:
+        print (traceback.print_exc())
         print("Illegal Argument")
     except Exception:
         print (traceback.print_exc())
