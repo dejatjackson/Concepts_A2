@@ -71,39 +71,39 @@ class LexicalAnalyzer():
                     raise LexicalExcpetion
             elif self.isValidIdentifier(lexeme.charAt(0)):
                 tokType = tokentype.id #letter
-            elif lexeme.equals(">="):
+            elif lexeme is ">=":
                 tokType = tokentype.ge_operator #>=
-            elif lexeme.equals(">"):
+            elif lexeme is ">":
                 tokType = tokentype.gt_operator #>
-            elif lexeme.equals("<="):
+            elif lexeme is "<=":
                 tokType = tokentype.le_operator #<=
-            elif lexeme.equals("<"):
+            elif lexeme is "<":
                 tokType = tokentype.lt_operator #<
-            elif lexeme.equals("!="):
+            elif lexeme is "!=":
                 tokType = tokentype.ne_operator  #<=
-            elif lexeme.equals("=="):
+            elif lexeme is "==":
                 tokType = tokentype.eq_operator  #= =
-            elif lexeme.equals("%"):
+            elif lexeme is "%":
                 tokType = tokentype.mod_operator  #%
-            elif lexeme.equals("^"):
+            elif lexeme is "^":
                 tokType = tokentype.exp_operator #^
-            elif lexeme.equals("+"):
+            elif lexeme is "+":
                 tokType = tokentype.add_operator #+
-            elif lexeme.equals("-"):
+            elif lexeme is "-":
                 tokType = tokentype.sub_operator #-
-            elif lexeme.equals("*"):
+            elif lexeme is "*":
                 tokType = tokentype.mul_operator #*
-            elif lexeme.equals("/"):
+            elif lexeme is "/":
                 tokType = tokentype.div_operator #// *
-            #elif lexeme.equals("\""):
+            #elif lexeme is "\"":
                 #tokType = self.rev_div_operator         #\ * /
-            elif lexeme.equals ("="):
+            elif lexeme is "=":
                 tokType = tokentype.assignment_operator #=
-            elif lexeme.equals("("):
+            elif lexeme is "(":
                 tokType = tokentype.left_parent
-            elif lexeme.equals(")"):
+            elif lexeme is ")":
                 tokType = tokentype.right_parent
-            elif lexeme.equals(":"):
+            elif lexeme is ":":
                 tokType = tokentype.colon_tok
             else:
                 raise LexicalExcpetion
