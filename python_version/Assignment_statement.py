@@ -1,10 +1,8 @@
 import Statement
 import Arithmetic_expression
 import Memory
-import ID
 
-
-class Assignment_statement(Statement,Memory):
+class Assignment_statement(Statement, Memory):
     def __init__(self, var, a_express):
         if a_express is None:
             raise TypeError("null Expression")

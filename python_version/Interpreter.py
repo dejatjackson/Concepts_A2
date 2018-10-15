@@ -1,6 +1,6 @@
-import Parser
+from Parser import Parser
 import ParserException
-import Program
+from Program import Program
 import LexicalExcpetion
 
 
@@ -9,7 +9,7 @@ class Interpeter:
     #TODO
     def main(self):
         try:
-            parse = Parser.Parser("test4.jl")
+            parse = Parser("test1.jl")
             pro = Program.Program(parse)
             pro.parse()
         except ParserException:
