@@ -216,7 +216,8 @@ class Parser():
         try:
             if tok.getTokType() != tokentype.id:
                 raise ParserException
-            return ID.ID(tok.getLexeme().charAt(0))
+            t = tok.getLexeme()
+            return ID.ID(t[0])
         except ParserException:
             print("identifier expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())
 
@@ -248,7 +249,7 @@ class Parser():
             elif tok.getTokType() == tokentype.le_operator:
                 op = Relative_op.le_operator
             else:
-                raise ParserException#
+                raise ParserException
             return op
         except ParserException:
             print("relational operator expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())

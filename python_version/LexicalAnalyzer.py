@@ -69,7 +69,7 @@ class LexicalAnalyzer():
                     tokType = tokentype.for_tok
                 else:
                     raise LexicalExcpetion
-            elif self.isValidIdentifier(lexeme.charAt(0)):
+            elif self.isValidIdentifier(lexeme[0]):
                 tokType = tokentype.id #letter
             elif lexeme.equals(">="):
                 tokType = tokentype.ge_operator #>=
@@ -116,9 +116,9 @@ class LexicalAnalyzer():
         if lexeme is None:
             raise TypeError("null string argument")
         i = 0
-        while i < lexeme.size() and lexeme.charAt(i).isdigit():
-            i+= 1
-        i  = lexeme.size()
+        while i < len(lexeme) and lexeme[i].isdigit():
+            i += 1
+        i = lexeme.size()
         return i
 
     def getLexeme(self,line, index):
