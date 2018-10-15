@@ -1,7 +1,8 @@
 
 class Block:
 
-	ar = []
+	def __init__(self):
+		ar = []
 
 	def __init__(self, statement):
 		self.ar.append(statement)

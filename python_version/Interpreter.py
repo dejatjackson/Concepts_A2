@@ -1,6 +1,8 @@
 import Parser
 import ParserException
 import Program
+import LexicalExcpetion
+
 
 class Interpeter:
 
@@ -10,11 +12,12 @@ class Interpeter:
             parse = Parser("test4.jl")
             pro = Program(parse)
             pro.parse()
-        except:
+        except ParserException:
             print('Parser Exception')
             #TODO: What's the right way to do this?
-
-
+        except LexicalExcpetion:
+            print('Lexical Exception')
+        except IllegalArgumentException:
     if __name__ == '__main__':
         main()
 
