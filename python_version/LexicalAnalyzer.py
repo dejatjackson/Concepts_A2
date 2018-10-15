@@ -11,8 +11,7 @@ class LexicalAnalyzer():
             raise TypeError("null file name argument")
         lineNumber = 0
         with open(filename) as f:
-            for x in f:
-                line = x
+            for line in f:
                 lineNumber += 1
                 self.processLine(line, lineNumber) #TODO
 
