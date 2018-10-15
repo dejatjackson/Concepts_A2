@@ -4,7 +4,7 @@ import Memory
 import ID
 
 
-class Assignment_statement(Statement,Memory):
+class Assignment_statement(Statement):
     def __init__(self, var, a_express):
         if a_express is None:
             raise TypeError("null Expression")
@@ -14,4 +14,4 @@ class Assignment_statement(Statement,Memory):
         self.a_express = a_express
 
     def execute(self):
-        self.store(self.var.getChar(), self.a_express.evaluate())
+        Memory.Memory.store(self.var.getChar(), self.a_express.evaluate()) #TODO
