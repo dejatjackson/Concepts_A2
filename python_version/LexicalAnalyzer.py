@@ -132,7 +132,7 @@ class LexicalAnalyzer():
         return line.substring(index, i)
 
     def skipWhiteSpace(self, line, index):
-        while index < line.length() and line.charAt(index).isspace():
+        while index < len(line) and line.charAt(index).isspace():
             index += 1
         return index
 
