@@ -2,7 +2,7 @@
 import ParserException
 import Assignment_statement
 import While_statement
-import token
+from token import token
 import PrintStatement
 from tokentype import tokentype
 import Block
@@ -17,15 +17,13 @@ import Binary_expression
 import ID
 from Arithmetic_op import Arithmetic_op
 from Relative_op import Relative_op
-import LexicalAnalyzer
+from LexicalAnalyzer import LexicalAnalyzer
 
 
 class Parser():
 
-    global lex
-
     def __init__(self, filename):
-        lex = LexicalAnalyzer.LexicalAnalyzer(filename)
+        self.lex = LexicalAnalyzer(filename)
 
     def parse(self):
         try:
@@ -251,9 +249,9 @@ class Parser():
                 raise ParserException
             return op
         except ParserException:
-            print("relational operator expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())
+            print("relational operator expected at row " + str(tok.getRowNumber())  + " and column " + str(tok.getColumnNumber()))
 
-    def match(self,tok, tokType):
+    def match(self, tok, tokType):
         try:
             assert(tok is not None)
             assert(tokType is not None)
@@ -264,9 +262,9 @@ class Parser():
             
     def getLookaheadToken(self):
 
-        tok = None
+        tok = token()
         try:
-            tok = lex.getLookaheadToken()
+            tok = self.lex.getLookaheadToken()
             raise ParserException
         except:
             print("no more tokens")
@@ -275,9 +273,9 @@ class Parser():
 
     def getNextToken(self):
 
-        tok = None
+        tok = token()
         try:
-            tok = lex.getNextToken()
+            tok = self.lex.getNextToken()
             raise ParserException
         except:
             print("no more tokens")
