@@ -20,7 +20,8 @@ def main():
     except ValueError:
         print("Illegal Argument")
     except Exception:
-        print (traceback.print_exc() + "An exception has occurred")
+        print (traceback.print_exc())
+        print("An error has occured")
 
 
 if __name__ == '__main__':
