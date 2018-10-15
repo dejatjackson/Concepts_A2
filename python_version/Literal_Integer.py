@@ -1,5 +1,5 @@
 
-import Arithmetic_expression
+from Arithmetic_expression import Arithmetic_expression
 
 class Literal_integer(Arithmetic_expression):
 

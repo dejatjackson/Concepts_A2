@@ -1,4 +1,4 @@
-import Statement
+from Statement import Statement
 
 class PrintStatement(Statement):
 

@@ -1,4 +1,4 @@
-import Statement
+from Statement import Statement
 import Block
 
 class if_statement(Statement,Block):
