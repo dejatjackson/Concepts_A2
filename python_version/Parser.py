@@ -25,7 +25,7 @@ class Parser():
 
     global lex
 
-    def _init_(self, filename):
+    def __init__(self, filename):
         lex = LexicalAnalyzer.LexicalAnalyzer(filename)
 
     def parse(self):
