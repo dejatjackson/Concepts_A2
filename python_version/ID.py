@@ -1,4 +1,7 @@
+from Arithmetic_expression import Arithmetic_expression
+
 import Arithmetic_expression
+
 import Memory
 
 class ID():
