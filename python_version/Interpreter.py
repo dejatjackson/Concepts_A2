@@ -20,7 +20,7 @@ class Interpeter:
         except ValueError:
             print("Illegal Argument")
         except Exception:
-            print ("An exception has occured")
+            print ("An exception has occurred")
     if __name__ == '__main__':
         main()
 
