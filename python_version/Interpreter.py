@@ -2,7 +2,7 @@ import Parser
 import ParserException
 import Program
 import LexicalExcpetion
-
+import traceback
 
 class Interpeter:
     pass
@@ -20,7 +20,7 @@ def main():
     except ValueError:
         print("Illegal Argument")
     except Exception:
-        print ("An exception has occurred")
+        print (traceback.print_exc() + "An exception has occurred")
 
 
 if __name__ == '__main__':
