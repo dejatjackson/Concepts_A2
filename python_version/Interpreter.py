@@ -13,7 +13,7 @@ class Interpeter:
             pro = Program.Program(parse)
             pro.parse()
         except ParserException:
-            print('Parser Exception')
+            print("Parser Exception")
             #TODO: What's the right way to do this?
         except LexicalExcpetion:
             print("Lexical Exception")
