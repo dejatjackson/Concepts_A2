@@ -2,7 +2,7 @@ from token import token
 from tokentype import tokentype
 import LexicalExcpetion
 
-class LexicalAnalyzer(token, tokentype):
+class LexicalAnalyzer():
 
     tokens = []
 
@@ -14,7 +14,7 @@ class LexicalAnalyzer(token, tokentype):
             for x in f:
                 line = x
                 lineNumber += 1
-                self.processLine(self.line, self.lineNumber)
+                self.processLine(self.line, self.lineNumber) #TODO
 
         new_tok = token(tokentype.EOS, "EOS", lineNumber, 1)
         self.tokens.append(new_tok)
@@ -147,7 +147,7 @@ class LexicalAnalyzer(token, tokentype):
         except LexicalExcpetion:
             print("No more tokens")
 
-    def getNextToken(self): 
+    def getNextToken(self):
         try:
             if len(self.tokens) == 0:
                 raise LexicalExcpetion
