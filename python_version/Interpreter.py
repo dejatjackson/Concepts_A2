@@ -11,7 +11,7 @@ def main():
     try:
         parse = Parser.Parser("test4.jl")
         pro = Program.Program(parse)
-        pro.parse()     #TODO
+        pro.execute()
 
     except ParserException:
         print("Parser Exception")
