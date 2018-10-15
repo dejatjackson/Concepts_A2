@@ -50,7 +50,7 @@ class Parser():
     def getBlock(self):
 
         try:
-            blk = Block.Block() #TODO
+            blk = Block.Block()
             tok = self.getLookaheadToken()
             while(self.isValidStartOfStatement(tok)):
                 stmt = self.getStatement()
@@ -205,7 +205,7 @@ class Parser():
         try:
             if tok.getTokType() != tokentype.literal_integer:
                 raise ParserException
-            value = Integer.parseInt(tok.getLexeme()) #TODO
+            value = int(tok.getLexeme())
             lit_int = Literal_Integer.Literal_integer(value)
             return lit_int
         except ParserException:
