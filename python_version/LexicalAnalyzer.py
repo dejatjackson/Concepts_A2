@@ -53,19 +53,19 @@ class LexicalAnalyzer():
 
                 if len(lexeme) == 1 and self.isValidIdentifier(lexeme.charAt(0)):
                     tokType = tokentype.id
-                elif lexeme.equals("function"):
+                elif lexeme is "function":
                     tokType = tokentype.function_tok
-                elif lexeme.equals("end"):
+                elif lexeme is "end":
                     tokType = tokentype.end_tok
-                elif lexeme.equals("if"):
+                elif lexeme is "if":
                     tokType = tokentype.if_tok
-                elif lexeme.equals("else"):
+                elif lexeme is "else":
                     tokType = tokentype.else_tok
-                elif lexeme.equals("print"):
+                elif lexeme is "print":
                     tokType = tokentype.print_tok
-                elif lexeme.equals("while"):
+                elif lexeme is "while":
                     tokType = tokentype.while_tok
-                elif lexeme.equals("for"):
+                elif lexeme is "for":
                     tokType = tokentype.for_tok
                 else:
                     raise LexicalExcpetion
