@@ -9,7 +9,7 @@ class Interpeter:
 
 def main():
     try:
-        pars = Parser("test3.jl")
+        pars = Parser("test1.jl")
         pro = pars.parse()
         pro.execute()
     except ParserException as e:

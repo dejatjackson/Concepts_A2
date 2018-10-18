@@ -55,7 +55,7 @@ class LexicalAnalyzer():
 
                 if len(lexeme) == 1 and self.isValidIdentifier(lexeme[0]):
                     tokType = tokentype.id
-                elif lexeme is "function ":
+                elif lexeme is "function":
                     tokType = tokentype.function_tok
                 elif lexeme is "end":
                     tokType = tokentype.end_tok
@@ -70,7 +70,7 @@ class LexicalAnalyzer():
                 elif lexeme is "for":
                     tokType = tokentype.for_tok
                 else:
-                    print(tokType + "Lexical Exception")
+                    print(tokType + "Lexical Exception") #TESTING
             elif self.isValidIdentifier(lexeme[0]):
                 tokType = tokentype.id #letter
             elif lexeme is ">=":
