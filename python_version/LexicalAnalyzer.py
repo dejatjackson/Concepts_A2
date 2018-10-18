@@ -45,7 +45,11 @@ class LexicalAnalyzer():
         try:
             if lexeme == None or len(lexeme) == 0:
                 raise ValueError("invalid string argument")
-            tokType = tokentype.EOS_TOK
+            tokType = tokentype
+            if lexeme[0:3] == "fun":
+                tokType = tokentype.function_tok
+            elif lexeme[0:3] == "pri":
+                tokType = tokentype.print_tok
             if lexeme[0].isdigit():
                 if self.allDigits(lexeme):
                     tokType = tokentype.literal_integer #digit literal_integer | digit
@@ -70,7 +74,7 @@ class LexicalAnalyzer():
                 elif lexeme is "for":
                     tokType = tokentype.for_tok
                 else:
-                    print(tokType + "Lexical Exception")
+                    print(tokType + " Lexical Exception")
             elif self.isValidIdentifier(lexeme[0]):
                 tokType = tokentype.id #letter
             elif lexeme is ">=":

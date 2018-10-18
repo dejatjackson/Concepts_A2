@@ -14,7 +14,7 @@ import Arithmetic_expression
 import IfStatement
 import ForStatement
 import Binary_expression
-import ID
+from ID import ID
 from Arithmetic_op import Arithmetic_op
 from Relative_op import Relative_op
 import LexicalAnalyzer
@@ -217,9 +217,9 @@ class Parser():
             if tok.getTokType() != tokentype.id:
                 raise ParserException
             t = tok.getLexeme()
-            return ID.ID(t[0])
+            return ID(t[0])
         except ParserException:
-            print("identifier expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())
+            print("identifier expected at row " + tok.getRowNumber() + " and column " + tok.getColumnNumber())
 
     def getBooleanExpression(self):
         try:
@@ -264,7 +264,7 @@ class Parser():
             print(str(tokType) + " expected at row " + str(tok.getRowNumber()) + " and column " + str(tok.getColumnNumber()))
 
     def getLookaheadToken(self):
-        global lex
+        # global lex
 
         tok = None
         try:
@@ -276,7 +276,7 @@ class Parser():
 
 
     def getNextToken(self):
-        global lex
+        # global lex
         tok = None
         try:
             tok = lex.getNextToken()
