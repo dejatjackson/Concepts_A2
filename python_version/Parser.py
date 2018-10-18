@@ -25,6 +25,7 @@ class Parser():
     global lex
 
     def __init__(self, filename):
+        global lex
         lex = LexicalAnalyzer.LexicalAnalyzer(filename)
 
     def parse(self):
@@ -255,31 +256,32 @@ class Parser():
 
     def match(self,tok, tokType):
         try:
-            assert(tok is not None)
-            assert(tokType is not None)
+           # assert(tok is not None)
+           # assert(tokType is not None)
             if tok.getTokType() != tokType:
                 raise ParserException
         except ParserException:
             print(str(tokType) + " expected at row " + str(tok.getRowNumber()) + " and column " + str(tok.getColumnNumber()))
 
     def getLookaheadToken(self):
+        global lex
 
         tok = None
         try:
             tok = lex.getLookaheadToken()
             raise ParserException
-        except:
+        except ParserException:
             print("no more tokens")
         return tok
 
 
     def getNextToken(self):
-
+        global lex
         tok = None
         try:
             tok = lex.getNextToken()
             raise ParserException
-        except:
+        except ParserException:
             print("no more tokens")
         return tok
 

@@ -12,8 +12,10 @@ class LexicalAnalyzer():
         lineNumber = 0
         with open(filename) as f:
             for line in f:
+                print(line)
                 lineNumber += 1
                 self.processLine(line, lineNumber)
+        f.close()
         new_tok = token(tokentype.EOS_TOK, "EOS", lineNumber, 1)
         self.tokens.append(new_tok)
 
@@ -29,6 +31,7 @@ class LexicalAnalyzer():
         while index < len(line):
             lexeme = self.getLexeme(line, index)
             tokType = self.getTokenType(lexeme, lineNumber, index + 1)
+            print(tokType) #TESTING CODE
             n_tok = token(tokType, lexeme, lineNumber, index + 1)
             self.tokens.append(n_tok)
             #tokens.add(new token (tokType, lexeme, lineNumber, index + 1));
@@ -52,7 +55,7 @@ class LexicalAnalyzer():
 
                 if len(lexeme) == 1 and self.isValidIdentifier(lexeme[0]):
                     tokType = tokentype.id
-                elif lexeme is "function":
+                elif lexeme is "function ":
                     tokType = tokentype.function_tok
                 elif lexeme is "end":
                     tokType = tokentype.end_tok
@@ -67,7 +70,7 @@ class LexicalAnalyzer():
                 elif lexeme is "for":
                     tokType = tokentype.for_tok
                 else:
-                    print("Lexical Exception")
+                    print(tokType + "Lexical Exception")
             elif self.isValidIdentifier(lexeme[0]):
                 tokType = tokentype.id #letter
             elif lexeme is ">=":
@@ -88,7 +91,7 @@ class LexicalAnalyzer():
                 tokType = tokentype.exp_operator #^
             elif lexeme is "+":
                 tokType = tokentype.add_operator #+
-            elif lexeme is"-":
+            elif lexeme is "-":
                 tokType = tokentype.sub_operator #-
             elif lexeme is "*":
                 tokType = tokentype.mul_operator #*
@@ -105,7 +108,9 @@ class LexicalAnalyzer():
             elif lexeme is ":":
                 tokType = tokentype.colon_tok
             else:
+                print ("Didn't set tokentype")
                 raise LexicalExcpetion
+
             return tokType
         except LexicalExcpetion:
             print( "invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
