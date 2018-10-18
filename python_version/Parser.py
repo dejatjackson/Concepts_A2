@@ -2,7 +2,7 @@
 import ParserException
 import Assignment_statement
 import While_statement
-from token import token
+import token
 import PrintStatement
 from tokentype import tokentype
 import Block
@@ -17,13 +17,16 @@ import Binary_expression
 import ID
 from Arithmetic_op import Arithmetic_op
 from Relative_op import Relative_op
-from LexicalAnalyzer import LexicalAnalyzer
+import LexicalAnalyzer
 
 
 class Parser():
 
+    global lex
+
     def __init__(self, filename):
-        self.lex = LexicalAnalyzer(filename)
+        global lex
+        lex = LexicalAnalyzer.LexicalAnalyzer(filename)
 
     def parse(self):
         try:
@@ -249,35 +252,36 @@ class Parser():
                 raise ParserException
             return op
         except ParserException:
-            print("relational operator expected at row " + str(tok.getRowNumber())  + " and column " + str(tok.getColumnNumber()))
+            print("relational operator expected at row " + tok.getRowNumber()  + " and column " + tok.getColumnNumber())
 
-    def match(self, tok, tokType):
+    def match(self,tok, tokType):
         try:
-            assert(tok is not None)
-            assert(tokType is not None)
+           # assert(tok is not None)
+           # assert(tokType is not None)
             if tok.getTokType() != tokType:
                 raise ParserException
         except ParserException:
             print(str(tokType) + " expected at row " + str(tok.getRowNumber()) + " and column " + str(tok.getColumnNumber()))
-            
-    def getLookaheadToken(self):
 
-        tok = token()
+    def getLookaheadToken(self):
+        global lex
+
+        tok = None
         try:
-            tok = self.lex.getLookaheadToken()
+            tok = lex.getLookaheadToken()
             raise ParserException
-        except:
+        except ParserException:
             print("no more tokens")
         return tok
 
 
     def getNextToken(self):
-
-        tok = token()
+        global lex
+        tok = None
         try:
-            tok = self.lex.getNextToken()
+            tok = lex.getNextToken()
             raise ParserException
-        except:
+        except ParserException:
             print("no more tokens")
         return tok
 
