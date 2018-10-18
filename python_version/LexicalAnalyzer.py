@@ -45,11 +45,11 @@ class LexicalAnalyzer():
         try:
             if lexeme == None or len(lexeme) == 0:
                 raise ValueError("invalid string argument")
-            tokType = tokentype
-            if lexeme[0:3] == "fun":
-                tokType = tokentype.function_tok
-            elif lexeme[0:3] == "pri":
-                tokType = tokentype.print_tok
+            tokType = tokentype.EOS_TOK
+            # if lexeme[0:3] == "fun":
+            #     tokType = tokentype.function_tok
+            # elif lexeme[0:3] == "pri":
+            #     tokType = tokentype.print_tok
             if lexeme[0].isdigit():
                 if self.allDigits(lexeme):
                     tokType = tokentype.literal_integer #digit literal_integer | digit
