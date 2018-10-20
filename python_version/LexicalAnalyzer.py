@@ -54,24 +54,24 @@ class LexicalAnalyzer():
                 if self.allDigits(lexeme):
                     tokType = tokentype.literal_integer #digit literal_integer | digit
                 else:
-                  print("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
+                    print("literal integer expected " + " at row " + rowNumber + " and column " + columnNumber)
             elif lexeme[0].isalpha():
 
                 if len(lexeme) == 1 and self.isValidIdentifier(lexeme[0]):
                     tokType = tokentype.id
-                elif lexeme is "function ":
+                elif lexeme == "function":
                     tokType = tokentype.function_tok
-                elif lexeme is "end":
+                elif lexeme == "end":
                     tokType = tokentype.end_tok
-                elif lexeme is "if":
+                elif lexeme == "if":
                     tokType = tokentype.if_tok
-                elif lexeme is "else":
+                elif lexeme == "else":
                     tokType = tokentype.else_tok
-                elif lexeme is "print":
+                elif lexeme == "print":
                     tokType = tokentype.print_tok
-                elif lexeme is "while":
+                elif lexeme == "while":
                     tokType = tokentype.while_tok
-                elif lexeme is "for":
+                elif lexeme == "for":
                     tokType = tokentype.for_tok
                 else:
                     print(tokType + " Lexical Exception")
