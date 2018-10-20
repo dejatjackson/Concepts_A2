@@ -78,39 +78,39 @@ class LexicalAnalyzer():
 
             elif self.isValidIdentifier(lexeme[0]):
                 tokType = tokentype.id #letter
-            elif lexeme is ">=":
+            elif lexeme == ">=":
                 tokType = tokentype.ge_operator #>=
-            elif lexeme is ">":
+            elif lexeme == ">":
                 tokType = tokentype.gt_operator #>
-            elif lexeme is "<=":
+            elif lexeme == "<=":
                 tokType = tokentype.le_operator #<=
-            elif lexeme is "<":
+            elif lexeme == "<":
                 tokType = tokentype.lt_operator #<
-            elif lexeme is "!=":
+            elif lexeme == "!=":
                 tokType = tokentype.ne_operator  #<=
-            elif lexeme is"==":
+            elif lexeme == "==":
                 tokType = tokentype.eq_operator  #= =
-            elif lexeme is "%":
+            elif lexeme == "%":
                 tokType = tokentype.mod_operator  #%
-            elif lexeme is "^":
+            elif lexeme == "^":
                 tokType = tokentype.exp_operator #^
-            elif lexeme is "+":
+            elif lexeme == "+":
                 tokType = tokentype.add_operator #+
-            elif lexeme is "-":
+            elif lexeme == "-":
                 tokType = tokentype.sub_operator #-
-            elif lexeme is "*":
+            elif lexeme == "*":
                 tokType = tokentype.mul_operator #*
-            elif lexeme is "/":
+            elif lexeme == "/":
                 tokType = tokentype.div_operator #// *
             #elif lexeme.equals("\""):
                 #tokType = self.rev_div_operator         #\ * /
-            elif lexeme is "=":
+            elif lexeme == "=":
                 tokType = tokentype.assignment_operator #=
-            elif lexeme is"(":
+            elif lexeme == "(":
                 tokType = tokentype.left_parent
-            elif lexeme is ")":
+            elif lexeme == ")":
                 tokType = tokentype.right_parent
-            elif lexeme is ":":
+            elif lexeme == ":":
                 tokType = tokentype.colon_tok
             else:
                 print ("Didn't set tokentype")
@@ -159,6 +159,7 @@ class LexicalAnalyzer():
         try:
             if len(self.tokens) == 0:
                 raise LexicalExcpetion
+            # print(self.tokens[0])
             return self.tokens.remove(0)
         except LexicalExcpetion:
             print("There aren't any more tokens")

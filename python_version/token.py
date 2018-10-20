@@ -28,4 +28,4 @@ class token():
         return self.colNumber
 
     def __str__(self):
-        return "Line Number: " + self.getRowNumber() + " Lexeme Value: " + self.getLexeme() + " Token Type:" + self.getTokType()
+        return "Line Number: " + str(self.getRowNumber()) + " Lexeme Value: " + str(self.getLexeme()) + " Token Type:" + str(self.getTokType())
