@@ -75,6 +75,7 @@ class LexicalAnalyzer():
                     tokType = tokentype.for_tok
                 else:
                     print(tokType + " Lexical Exception")
+
             elif self.isValidIdentifier(lexeme[0]):
                 tokType = tokentype.id #letter
             elif lexeme is ">=":
@@ -117,7 +118,7 @@ class LexicalAnalyzer():
 
             return tokType
         except LexicalExcpetion:
-            print( "invalid lexeme "+ " at row " + rowNumber  + " and column " + columnNumber)
+            print("invalid lexeme " + " at row " + rowNumber + " and column " + columnNumber)
 
 
     def allDigits(self, lexeme):

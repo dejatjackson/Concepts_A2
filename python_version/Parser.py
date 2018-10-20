@@ -34,7 +34,7 @@ class Parser():
             self.match(tok, tokentype.function_tok)
             functionName = self.getId()
             tok = self.getNextToken()
-            self.match(tok, tokentype.id.left_parent)
+            self.match(tok, tokentype.left_parent)
             tok = self.getNextToken()
             self.match(tok, tokentype.right_parent)
             blk = self.getBlock()
@@ -52,7 +52,7 @@ class Parser():
         try:
             blk = Block.Block()
             tok = self.getLookaheadToken()
-            while(self.isValidStartOfStatement(tok)):
+            while self.isValidStartOfStatement(tok):
                 stmt = self.getStatement()
                 blk.add(stmt)
                 tok = self.getLookaheadToken()
@@ -62,15 +62,16 @@ class Parser():
 
     def getStatement(self):
 
+        # stmt = Statement.Statement()
         tok = self.getLookaheadToken()
         try:
             if tok.getTokType() == tokentype.if_tok:
                 stmt = self.getIfStatement()
             elif tok.getTokType == tokentype.while_tok:
                 stmt = self.getWhileStatement()
-            elif tok.getTokType == tokentype.tokentype.print_tok:
+            elif tok.getTokType == tokentype.print_tok:
                     stmt = self.getPrintStatement()
-            elif tok.getTokType == tokentype.tokentype.for_tok:
+            elif tok.getTokType == tokentype.for_tok:
                 stmt = self.getForStatement()
             elif tok.getTokType == tokentype.id:
                 stmt = self.getAssignmentStatement()
@@ -100,7 +101,7 @@ class Parser():
             tok = self.getNextToken()
             self.match(tok, tokentype.right_parent)
             return PrintStatement.PrintStatement(expr)
-        except:
+        except ParserException:
             raise ParserException
 
     def getWhileStatement(self):
@@ -113,7 +114,7 @@ class Parser():
             self.match(tok, tokentype.end_tok)
             w_stmt = While_statement.While_statement(expr,blk)
             return w_stmt
-        except:
+        except ParserException:
             raise ParserException
 
 
@@ -128,7 +129,7 @@ class Parser():
             self.match(tok,tokentype.end_tok)
             f_stat = ForStatement.ForStatement(expr,blk)
             return f_stat
-        except:
+        except ParserException:
             raise ParserException
 
 
@@ -145,7 +146,7 @@ class Parser():
             self.match(tok, tokentype.end_tok)
             f_stat = IfStatement.if_statement(expr, blk1, blk2)
             return f_stat
-        except:
+        except ParserException:
             raise ParserException
 
     def isValidStartOfStatement(self,tok):
@@ -163,7 +164,7 @@ class Parser():
             else:
                 expr = self.getBinaryExpression()
             return expr
-        except:
+        except ParserException:
             raise ParserException
 
 
@@ -175,7 +176,7 @@ class Parser():
             expr2 = self.getArithmeticExpression()
             b_express = Binary_expression.Binary_expression(op,expr1,expr2)
             return b_express
-        except:
+        except ParserException:
             raise ParserException
 
     def getArithmeticOperator(self):
