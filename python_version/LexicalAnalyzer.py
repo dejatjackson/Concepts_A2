@@ -21,7 +21,7 @@ class LexicalAnalyzer():
 
 
     def processLine(self,line,lineNumber):
-        #try:
+        #try:   
         if line == "":
             raise ValueError("null line argument")
         if lineNumber <= 0:
