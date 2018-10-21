@@ -17,7 +17,7 @@ class tokentype():
         eq_operator = "eq_operator"
         assignment_operator = "assignment_operator"
         add_operator = "add_operator"
-        add_operator = "add_operator"
+        div_operator = "div_operator"
         mul_operator = "mul_operator"
         mod_operator = "mod_operator"
         exp_operator = " exp_operator "

@@ -7,7 +7,7 @@ class LexicalAnalyzer():
     tokens = []
 
     def __init__(self, filename):
-        if filename is None:
+        if filename == "":
             raise TypeError("null file name argument")
         lineNumber = 0
         with open(filename) as f:
@@ -22,7 +22,7 @@ class LexicalAnalyzer():
 
     def processLine(self,line,lineNumber):
         #try:
-        if line is None:
+        if line == "":
             raise ValueError("null line argument")
         if lineNumber <= 0:
             raise ValueError("invalid line number argument")
@@ -46,10 +46,7 @@ class LexicalAnalyzer():
             if lexeme == None or len(lexeme) == 0:
                 raise ValueError("invalid string argument")
             tokType = tokentype.EOS_TOK
-            # if lexeme[0:3] == "fun":
-            #     tokType = tokentype.function_tok
-            # elif lexeme[0:3] == "pri":
-            #     tokType = tokentype.print_tok
+
             if lexeme[0].isdigit():
                 if self.allDigits(lexeme):
                     tokType = tokentype.literal_integer #digit literal_integer | digit
