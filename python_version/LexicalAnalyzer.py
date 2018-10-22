@@ -18,7 +18,7 @@ class LexicalAnalyzer():
         f.close()
         new_tok = token(tokentype.EOS_TOK, "EOS", lineNumber, 1)
         self.tokens.append(new_tok)
-        #print('[%s]' % ', '.join(map(str, self.tokens)))
+        print('[%s]' % ', '.join(map(str, self.tokens)))
 
     def processLine(self,line,lineNumber):
         #try:   
