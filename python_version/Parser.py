@@ -261,7 +261,7 @@ class Parser():
            # assert(tok is not None)
            # assert(tokType is not None)
             if tok.getTokType() != tokType:
-                raise ParserException
+                raise ParserException   
         except ParserException:
             print(str(tokType) + " expected at row " + str(tok.getRowNumber()) + " and column " + str(tok.getColumnNumber()))
 
