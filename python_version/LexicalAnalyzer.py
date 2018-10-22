@@ -156,7 +156,7 @@ class LexicalAnalyzer():
         try:
             if len(self.tokens) == 0:
                 raise LexicalExcpetion
-            print("HERE" + str(self.tokens[0]))
+            #print("HERE" + str(self.tokens[0]))
             return self.tokens.pop(0)
         except LexicalExcpetion:
             print("There aren't any more tokens")
