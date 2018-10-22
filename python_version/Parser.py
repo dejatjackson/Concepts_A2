@@ -273,7 +273,7 @@ class Parser():
             tok = lex.getLookaheadToken()
             raise ParserException
         except ParserException:
-            print(tok)
+            #print(tok)
             print("no more tokens")
         return tok
 
@@ -285,7 +285,7 @@ class Parser():
             tok = lex.getNextToken()
             raise ParserException
         except ParserException:
-            print(tok)
+            #print(tok)
             print("no more tokens")
         return tok
 

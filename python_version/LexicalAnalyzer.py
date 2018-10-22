@@ -12,13 +12,13 @@ class LexicalAnalyzer():
         lineNumber = 0
         with open(filename) as f:
             for line in f:
-                print(line)
+                #print(line)
                 lineNumber += 1
                 self.processLine(line, lineNumber)
         f.close()
         new_tok = token(tokentype.EOS_TOK, "EOS", lineNumber, 1)
         self.tokens.append(new_tok)
-        print('[%s]' % ', '.join(map(str, self.tokens)))
+        #print('[%s]' % ', '.join(map(str, self.tokens)))
 
     def processLine(self,line,lineNumber):
         #try:   
@@ -31,7 +31,7 @@ class LexicalAnalyzer():
         while index < len(line):
             lexeme = self.getLexeme(line, index)
             tokType = self.getTokenType(lexeme, lineNumber, index + 1)
-            print(tokType) #TESTING CODE
+            #print(tokType) #TESTING CODE
             n_tok = token(tokType, lexeme, lineNumber, index + 1)
             self.tokens.append(n_tok)
             #tokens.add(new token (tokType, lexeme, lineNumber, index + 1));
