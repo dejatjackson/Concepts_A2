@@ -18,7 +18,7 @@ class LexicalAnalyzer():
         f.close()
         new_tok = token(tokentype.EOS_TOK, "EOS", lineNumber, 1)
         self.tokens.append(new_tok)
-
+        #print('[%s]' % ', '.join(map(str, self.tokens)))
 
     def processLine(self,line,lineNumber):
         #try:   
@@ -71,7 +71,7 @@ class LexicalAnalyzer():
                 elif lexeme == "for":
                     tokType = tokentype.for_tok
                 else:
-                    print(tokType + " Lexical Exception")
+                    print("Lexical Exception")
 
             elif self.isValidIdentifier(lexeme[0]):
                 tokType = tokentype.id #letter
@@ -156,21 +156,10 @@ class LexicalAnalyzer():
         try:
             if len(self.tokens) == 0:
                 raise LexicalExcpetion
-            # print(self.tokens[0])
-            return self.tokens.remove(0)
+            print("HERE" + str(self.tokens[0]))
+            return self.tokens.pop(0)
         except LexicalExcpetion:
             print("There aren't any more tokens")
-
-
-
-    def getForExpression(self):
-
-        token = []
-        for_tokens = token[3]
-
-        for i in range (for_tokens.length - 1):
-            for_tokens[i] = self.tokens[1]
-        return for_tokens
 
 
     def isValidIdentifier(self, ch):

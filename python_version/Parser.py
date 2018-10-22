@@ -28,6 +28,7 @@ class Parser():
         global lex
         lex = LexicalAnalyzer.LexicalAnalyzer(filename)
 
+
     def parse(self):
         try:
             tok = self.getNextToken()
@@ -281,7 +282,7 @@ class Parser():
         tok = None
         try:
             tok = lex.getNextToken()
-            # raise ParserException
+            raise ParserException
         except ParserException:
             print("no more tokens")
         return tok
